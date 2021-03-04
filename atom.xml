@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Xu&#39;s Blog</title>
+  <title>Fred&#39;s Blog</title>
   
   <subtitle>博观而约取，厚积而薄发</subtitle>
   <link href="/atom.xml" rel="self"/>
@@ -10,7 +10,7 @@
   <id>https://ltfred.top/</id>
   
   <author>
-    <name>·银河小徐</name>
+    <name>Petrichor</name>
     
   </author>
   
