@@ -452,14 +452,14 @@
   </url>
   
   <url>
-    <loc>https://ltfred.top/tags/Shell/</loc>
+    <loc>https://ltfred.top/tags/JVM/</loc>
     <lastmod>2021-03-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://ltfred.top/tags/JVM/</loc>
+    <loc>https://ltfred.top/tags/Shell/</loc>
     <lastmod>2021-03-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -515,6 +515,13 @@
   </url>
   
   <url>
+    <loc>https://ltfred.top/tags/%E7%82%B9%E5%87%BB%E7%89%B9%E6%95%88/</loc>
+    <lastmod>2021-03-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://ltfred.top/tags/Password/</loc>
     <lastmod>2021-03-04</lastmod>
     <changefreq>daily</changefreq>
@@ -529,13 +536,6 @@
   </url>
   
   <url>
-    <loc>https://ltfred.top/tags/%E7%82%B9%E5%87%BB%E7%89%B9%E6%95%88/</loc>
-    <lastmod>2021-03-04</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://ltfred.top/tags/Photos/</loc>
     <lastmod>2021-03-04</lastmod>
     <changefreq>daily</changefreq>
@@ -543,14 +543,14 @@
   </url>
   
   <url>
-    <loc>https://ltfred.top/tags/%E9%82%AE%E4%BB%B6%E8%AE%A2%E9%98%85/</loc>
+    <loc>https://ltfred.top/tags/Rss/</loc>
     <lastmod>2021-03-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://ltfred.top/tags/Rss/</loc>
+    <loc>https://ltfred.top/tags/%E9%82%AE%E4%BB%B6%E8%AE%A2%E9%98%85/</loc>
     <lastmod>2021-03-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -599,14 +599,14 @@
   </url>
   
   <url>
-    <loc>https://ltfred.top/tags/%E4%BB%A3%E7%A0%81%E5%9D%97/</loc>
+    <loc>https://ltfred.top/tags/BUG/</loc>
     <lastmod>2021-03-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://ltfred.top/tags/BUG/</loc>
+    <loc>https://ltfred.top/tags/%E4%BB%A3%E7%A0%81%E5%9D%97/</loc>
     <lastmod>2021-03-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -648,6 +648,13 @@
   </url>
   
   <url>
+    <loc>https://ltfred.top/tags/Nginx/</loc>
+    <lastmod>2021-03-04</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://ltfred.top/tags/SpringBoot/</loc>
     <lastmod>2021-03-04</lastmod>
     <changefreq>daily</changefreq>
@@ -656,13 +663,6 @@
   
   <url>
     <loc>https://ltfred.top/tags/LocalDateTime/</loc>
-    <lastmod>2021-03-04</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://ltfred.top/tags/Nginx/</loc>
     <lastmod>2021-03-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -769,14 +769,14 @@
   </url>
   
   <url>
-    <loc>https://ltfred.top/categories/Java/%E5%B7%A5%E5%85%B7%E7%B1%BB/</loc>
+    <loc>https://ltfred.top/categories/Java/JVM/</loc>
     <lastmod>2021-03-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://ltfred.top/categories/Java/JVM/</loc>
+    <loc>https://ltfred.top/categories/Java/%E5%B7%A5%E5%85%B7%E7%B1%BB/</loc>
     <lastmod>2021-03-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -825,14 +825,14 @@
   </url>
   
   <url>
-    <loc>https://ltfred.top/categories/SpringBoot/</loc>
+    <loc>https://ltfred.top/categories/Nginx/</loc>
     <lastmod>2021-03-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://ltfred.top/categories/Nginx/</loc>
+    <loc>https://ltfred.top/categories/SpringBoot/</loc>
     <lastmod>2021-03-04</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
