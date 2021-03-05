@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ltfred.top/"/>
-  <updated>2021-02-14T14:13:54.000Z</updated>
+  <updated>2021-03-05T02:24:27.364Z</updated>
   <id>https://ltfred.top/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Golang库之mergo</title>
+    <link href="https://ltfred.top/posts/b85c60c3.html"/>
+    <id>https://ltfred.top/posts/b85c60c3.html</id>
+    <published>2021-03-06T10:56:53.000Z</published>
+    <updated>2021-03-05T02:24:27.364Z</updated>
+    
+    <summary type="html">
+    
+      今天我们介绍一个合并结构体字段的库mergo
+    
+    </summary>
+    
+    
+      <category term="Golang" scheme="https://ltfred.top/categories/Golang/"/>
+    
+    
+      <category term="mergo" scheme="https://ltfred.top/tags/mergo/"/>
+    
+      <category term="Golang" scheme="https://ltfred.top/tags/Golang/"/>
+    
+  </entry>
   
   <entry>
     <title>Java多线程情况下执行Shell命令</title>
