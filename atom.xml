@@ -48,7 +48,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;将Hexo博客部署在线上，想直接搭建&lt;code&gt;Git&lt;/code&gt;和&lt;code&gt;Nginx&lt;/code&gt;环境，然后慢慢配置，然而每次都有报错的地方。最后想利用宝塔面板试试。宝塔已经预装了&lt;code&gt;Git&lt;/code&gt;环境，只需要安装Nginx即可&lt;/p&gt;
+      &lt;p&gt;将Hexo博客部署在线上，想直接搭建Git和Nginx环境，然后慢慢配置，然而每次都有报错的地方。最后想利用宝塔面板试试。宝塔已经预装了Git环境，只需要安装Nginx即可&lt;/p&gt;
     
     </summary>
     
