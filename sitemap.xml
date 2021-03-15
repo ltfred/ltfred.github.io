@@ -46,6 +46,13 @@
 
   
   <url>
+    <loc>https://ltfred.top/tags/Hexo/</loc>
+    <lastmod>2021-03-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://ltfred.top/tags/mergo/</loc>
     <lastmod>2021-03-15</lastmod>
     <changefreq>daily</changefreq>
@@ -59,24 +66,17 @@
     <priority>0.6</priority>
   </url>
   
-  <url>
-    <loc>https://ltfred.top/tags/hexo/</loc>
-    <lastmod>2021-03-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
 
   
   <url>
-    <loc>https://ltfred.top/categories/Golang/</loc>
+    <loc>https://ltfred.top/categories/Hexo/</loc>
     <lastmod>2021-03-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://ltfred.top/categories/hexo/</loc>
+    <loc>https://ltfred.top/categories/Golang/</loc>
     <lastmod>2021-03-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
