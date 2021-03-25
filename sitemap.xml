@@ -46,7 +46,7 @@
 
   <url>
     <loc>https://ltfred.top/</loc>
-    <lastmod>2021-03-24</lastmod>
+    <lastmod>2021-03-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -54,28 +54,28 @@
   
   <url>
     <loc>https://ltfred.top/tags/Hexo/</loc>
-    <lastmod>2021-03-24</lastmod>
+    <lastmod>2021-03-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://ltfred.top/tags/Github/</loc>
-    <lastmod>2021-03-24</lastmod>
+    <lastmod>2021-03-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://ltfred.top/tags/mergo/</loc>
-    <lastmod>2021-03-24</lastmod>
+    <lastmod>2021-03-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://ltfred.top/tags/Golang/</loc>
-    <lastmod>2021-03-24</lastmod>
+    <lastmod>2021-03-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -84,21 +84,21 @@
   
   <url>
     <loc>https://ltfred.top/categories/Hexo/</loc>
-    <lastmod>2021-03-24</lastmod>
+    <lastmod>2021-03-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://ltfred.top/categories/Golang/</loc>
-    <lastmod>2021-03-24</lastmod>
+    <lastmod>2021-03-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://ltfred.top/categories/Github/</loc>
-    <lastmod>2021-03-24</lastmod>
+    <lastmod>2021-03-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
