@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ltfred.top/"/>
-  <updated>2021-03-22T14:58:09.000Z</updated>
+  <updated>2021-03-26T18:58:09.000Z</updated>
   <id>https://ltfred.top/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Golang的并发与调度</title>
+    <link href="https://ltfred.top/posts/b4346kc7.html"/>
+    <id>https://ltfred.top/posts/b4346kc7.html</id>
+    <published>2021-03-26T18:58:09.000Z</published>
+    <updated>2021-03-26T18:58:09.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Go语言在语言层面引入&lt;code&gt;goroutine&lt;/code&gt;，有以下好处：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;goroutine&lt;/code&gt;可以在用户空间调度，避免了内核态和用户态的切换导致的成本&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;goroutine&lt;/code&gt;更小的栈空间允许用户创建成千上万的实例&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;下面介绍Go语言的&lt;code&gt;goroutine&lt;/code&gt;调度模型。Go的调度模型中抽象出三个实体：M，P，G。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Golang" scheme="https://ltfred.top/categories/Golang/"/>
+    
+    
+      <category term="goroutine" scheme="https://ltfred.top/tags/goroutine/"/>
+    
+  </entry>
   
   <entry>
     <title>国内提高Github访问速度的方法</title>

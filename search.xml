@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Golang的并发与调度</title>
+      <link href="posts/b4346kc7.html"/>
+      <url>posts/b4346kc7.html</url>
+      
+        <content type="html"><![CDATA[<p>Go语言在语言层面引入<code>goroutine</code>，有以下好处：</p><ul><li><p><code>goroutine</code>可以在用户空间调度，避免了内核态和用户态的切换导致的成本</p></li><li><p><code>goroutine</code>更小的栈空间允许用户创建成千上万的实例</p></li></ul><p>下面介绍Go语言的<code>goroutine</code>调度模型。Go的调度模型中抽象出三个实体：M，P，G。</p><span id="more"></span><h3 id="G-Goroutine">G(Goroutine)</h3><p>G是Go运行时对<code>goroutine</code>的抽象描述，G中存放并发执行的代码入口地址，上下文，运行环境(关联的P和M)，运行栈等执行相关的元信息。</p><h3 id="M-Machine">M(Machine)</h3><p>M代表OS的内核线程，是操作系统层面调度和执行的实体。M仅负责执行，M不停的被唤醒和创建，然后执行。</p><h3 id="P-Processor">P(Processor)</h3><p>P代表M运行G所需要的资源，是对资源的一种抽象和管理，P不是一段代码实体，而是一个管理的数据结构，P主要是降低M管理调度G的复杂性，增加的一个间接的控制层数据结构。把P看作资源，而不是处理器，P控制Go代码的并行度，它不是运行实体。P持有G的队列，解除P和M的绑定就解除了M对一串G的调用。</p><p>M和P一起构成一个运行时环境，每个P有一个本地的可调度G队列，队列里面的G会被M依次调度执行，如果本地队列空了，则会去全局队列里面去取一部分G，如果全局队列也是空的，则会去其他的P中偷取一部分G，这就是Work Stealing算法的基本原理。</p><p><img src="https://ltfreddeblog.oss-cn-shanghai.aliyuncs.com/2021/03/26/K0NAnR.png" class="lazyload placeholder" data-srcset="https://ltfreddeblog.oss-cn-shanghai.aliyuncs.com/2021/03/26/K0NAnR.png" srcset="https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/site-img/img-loading.gif" alt=""></p><hr><p>G并不是执行体，而是用于存放并发执行体的元信息，包括并发执行的入口函数、堆栈、上下文信息。G由于保存的元信息，为了减少对象的分配和回收，G对象是可以复用的，只需要将相关元信息初始化为新值即可。M仅负责执行，M启动时进入运行时的管理代码，管理代码必须拿到可用的P后，才能执行调度。P的数目默认是CPU核心的数量，可以通过<code>runtime.GOMAXPROCS</code>函数设置，M和P的数目差不多，但运行是会根据当前的状态动态创建M，M有一个最大的上限值，目前是10000。G与P是一种M:N的关系，M可以成千上万，远远大于N。</p><h3 id="什么时候创建M、P、G">什么时候创建M、P、G</h3><p>在程序启动过程中会初始化空闲的P列表，P是在这个时候被创建的，同时第一个G也是在初始化过程中被创建的，后续在有go并发调用的地方都有可能创建G。</p><p>每个并发调用都会初始化一个新的G任务，任何唤醒M执行任务，这个唤醒不是特定唤醒某个线程去工作，而是先尝试获取当前线程M，如果无法获取，则从全局调度的空闲M列表中去取可用的M，如果没有可用的，则新建M，然后绑定P运行G。</p><p>M线程里有管理调度和切换堆栈的逻辑，但是M必须拿到P才能运行。</p><h3 id="抢占调度">抢占调度</h3><p>抢占调度的原因</p><ul><li>不让某个G长久地被系统调用阻塞，阻碍其他G运行</li><li>不让某个G一直占用某个M不释放</li><li>避免全局队列里面的G得不到执行</li></ul><p>抢占调度策略</p><ul><li><p>在进入系统调用前后，个封装一层代码检测G的状态，当检测到当前G已被其他监控线程抢占调度，则M停止执行当前G，进行调度切换。</p></li><li><p>监控线程经过一段时间检测感知到P运行超过一定时间，取消P和M的关联。</p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Golang </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> goroutine </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>国内提高Github访问速度的方法</title>
       <link href="posts/b41g6fc7.html"/>
       <url>posts/b41g6fc7.html</url>
