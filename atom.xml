@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ltfred.top/"/>
-  <updated>2021-03-26T18:58:09.000Z</updated>
+  <updated>2021-04-01T14:58:09.000Z</updated>
   <id>https://ltfred.top/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Go之defer</title>
+    <link href="https://ltfred.top/posts/b4fg6fc3.html"/>
+    <id>https://ltfred.top/posts/b4fg6fc3.html</id>
+    <published>2021-04-01T14:58:09.000Z</published>
+    <updated>2021-04-01T14:58:09.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;defer介绍&quot;&gt;&lt;code&gt;defer&lt;/code&gt;介绍&lt;/h2&gt;
+&lt;p&gt;Go函数里提供了&lt;code&gt;defer&lt;/code&gt;关键字，可以注册多个延迟调用，这些调用以先进后出的顺序在函数返回前被执行，&lt;code&gt;defer&lt;/code&gt;常用于保证一些资源最终一定能够得到回收和释放。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Golang" scheme="https://ltfred.top/categories/Golang/"/>
+    
+    
+      <category term="Golang" scheme="https://ltfred.top/tags/Golang/"/>
+    
+      <category term="defer" scheme="https://ltfred.top/tags/defer/"/>
+    
+  </entry>
   
   <entry>
     <title>Golang的并发与调度</title>
@@ -41,6 +65,8 @@
     
       <category term="Golang" scheme="https://ltfred.top/categories/Golang/"/>
     
+    
+      <category term="Golang" scheme="https://ltfred.top/tags/Golang/"/>
     
       <category term="goroutine" scheme="https://ltfred.top/tags/goroutine/"/>
     
