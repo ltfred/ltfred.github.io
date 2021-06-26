@@ -60,7 +60,7 @@
 
   <url>
     <loc>https://ltfred.top/</loc>
-    <lastmod>2021-04-07</lastmod>
+    <lastmod>2021-06-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -68,42 +68,42 @@
   
   <url>
     <loc>https://ltfred.top/tags/Hexo/</loc>
-    <lastmod>2021-04-07</lastmod>
+    <lastmod>2021-06-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://ltfred.top/tags/Github/</loc>
-    <lastmod>2021-04-07</lastmod>
+    <lastmod>2021-06-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://ltfred.top/tags/mergo/</loc>
-    <lastmod>2021-04-07</lastmod>
+    <lastmod>2021-06-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://ltfred.top/tags/Golang/</loc>
-    <lastmod>2021-04-07</lastmod>
+    <lastmod>2021-06-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://ltfred.top/tags/goroutine/</loc>
-    <lastmod>2021-04-07</lastmod>
+    <lastmod>2021-06-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://ltfred.top/tags/defer/</loc>
-    <lastmod>2021-04-07</lastmod>
+    <lastmod>2021-06-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -112,21 +112,21 @@
   
   <url>
     <loc>https://ltfred.top/categories/Hexo/</loc>
-    <lastmod>2021-04-07</lastmod>
+    <lastmod>2021-06-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://ltfred.top/categories/Golang/</loc>
-    <lastmod>2021-04-07</lastmod>
+    <lastmod>2021-06-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://ltfred.top/categories/Github/</loc>
-    <lastmod>2021-04-07</lastmod>
+    <lastmod>2021-06-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
