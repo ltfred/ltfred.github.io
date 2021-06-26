@@ -5,9 +5,9 @@
   <subtitle>博观而约取，厚积而薄发</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://ltfred.top/"/>
+  <link href="https://ltfred.github.io/"/>
   <updated>2021-04-01T14:58:09.000Z</updated>
-  <id>https://ltfred.top/</id>
+  <id>https://ltfred.github.io/</id>
   
   <author>
     <name>Petrichor</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Go之defer</title>
-    <link href="https://ltfred.top/posts/b4fg6fc3.html"/>
-    <id>https://ltfred.top/posts/b4fg6fc3.html</id>
+    <link href="https://ltfred.github.io/posts/b4fg6fc3.html"/>
+    <id>https://ltfred.github.io/posts/b4fg6fc3.html</id>
     <published>2021-04-01T14:58:09.000Z</published>
     <updated>2021-04-01T14:58:09.000Z</updated>
     
@@ -31,19 +31,19 @@
     </summary>
     
     
-      <category term="Golang" scheme="https://ltfred.top/categories/Golang/"/>
+      <category term="Golang" scheme="https://ltfred.github.io/categories/Golang/"/>
     
     
-      <category term="Golang" scheme="https://ltfred.top/tags/Golang/"/>
+      <category term="Golang" scheme="https://ltfred.github.io/tags/Golang/"/>
     
-      <category term="defer" scheme="https://ltfred.top/tags/defer/"/>
+      <category term="defer" scheme="https://ltfred.github.io/tags/defer/"/>
     
   </entry>
   
   <entry>
     <title>Golang的并发与调度</title>
-    <link href="https://ltfred.top/posts/b4346kc7.html"/>
-    <id>https://ltfred.top/posts/b4346kc7.html</id>
+    <link href="https://ltfred.github.io/posts/b4346kc7.html"/>
+    <id>https://ltfred.github.io/posts/b4346kc7.html</id>
     <published>2021-03-26T18:58:09.000Z</published>
     <updated>2021-03-26T18:58:09.000Z</updated>
     
@@ -63,19 +63,19 @@
     </summary>
     
     
-      <category term="Golang" scheme="https://ltfred.top/categories/Golang/"/>
+      <category term="Golang" scheme="https://ltfred.github.io/categories/Golang/"/>
     
     
-      <category term="Golang" scheme="https://ltfred.top/tags/Golang/"/>
+      <category term="Golang" scheme="https://ltfred.github.io/tags/Golang/"/>
     
-      <category term="goroutine" scheme="https://ltfred.top/tags/goroutine/"/>
+      <category term="goroutine" scheme="https://ltfred.github.io/tags/goroutine/"/>
     
   </entry>
   
   <entry>
     <title>国内提高Github访问速度的方法</title>
-    <link href="https://ltfred.top/posts/b41g6fc7.html"/>
-    <id>https://ltfred.top/posts/b41g6fc7.html</id>
+    <link href="https://ltfred.github.io/posts/b41g6fc7.html"/>
+    <id>https://ltfred.github.io/posts/b41g6fc7.html</id>
     <published>2021-03-22T14:58:09.000Z</published>
     <updated>2021-03-22T14:58:09.000Z</updated>
     
@@ -93,17 +93,17 @@
     </summary>
     
     
-      <category term="Github" scheme="https://ltfred.top/categories/Github/"/>
+      <category term="Github" scheme="https://ltfred.github.io/categories/Github/"/>
     
     
-      <category term="Github" scheme="https://ltfred.top/tags/Github/"/>
+      <category term="Github" scheme="https://ltfred.github.io/tags/Github/"/>
     
   </entry>
   
   <entry>
     <title>Golang库之mergo</title>
-    <link href="https://ltfred.top/posts/b85c60c3.html"/>
-    <id>https://ltfred.top/posts/b85c60c3.html</id>
+    <link href="https://ltfred.github.io/posts/b85c60c3.html"/>
+    <id>https://ltfred.github.io/posts/b85c60c3.html</id>
     <published>2021-03-06T10:56:53.000Z</published>
     <updated>2021-03-15T02:23:54.227Z</updated>
     
@@ -114,19 +114,19 @@
     </summary>
     
     
-      <category term="Golang" scheme="https://ltfred.top/categories/Golang/"/>
+      <category term="Golang" scheme="https://ltfred.github.io/categories/Golang/"/>
     
     
-      <category term="mergo" scheme="https://ltfred.top/tags/mergo/"/>
+      <category term="mergo" scheme="https://ltfred.github.io/tags/mergo/"/>
     
-      <category term="Golang" scheme="https://ltfred.top/tags/Golang/"/>
+      <category term="Golang" scheme="https://ltfred.github.io/tags/Golang/"/>
     
   </entry>
   
   <entry>
     <title>阿里云使用宝塔面板部署Hexo博客</title>
-    <link href="https://ltfred.top/posts/b47g60c3.html"/>
-    <id>https://ltfred.top/posts/b47g60c3.html</id>
+    <link href="https://ltfred.github.io/posts/b47g60c3.html"/>
+    <id>https://ltfred.github.io/posts/b47g60c3.html</id>
     <published>2021-01-22T13:22:09.000Z</published>
     <updated>2021-01-22T13:22:09.000Z</updated>
     
@@ -137,10 +137,10 @@
     </summary>
     
     
-      <category term="Hexo" scheme="https://ltfred.top/categories/Hexo/"/>
+      <category term="Hexo" scheme="https://ltfred.github.io/categories/Hexo/"/>
     
     
-      <category term="Hexo" scheme="https://ltfred.top/tags/Hexo/"/>
+      <category term="Hexo" scheme="https://ltfred.github.io/tags/Hexo/"/>
     
   </entry>
   
