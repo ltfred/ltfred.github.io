@@ -9,6 +9,13 @@
   </url>
   
   <url>
+    <loc>https://ltfred.github.io/posts/b85c60c3.html</loc>
+    
+    <lastmod>2021-04-01</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://ltfred.github.io/posts/b4346kc7.html</loc>
     
     <lastmod>2021-03-26</lastmod>
@@ -19,13 +26,6 @@
     <loc>https://ltfred.github.io/posts/b41g6fc7.html</loc>
     
     <lastmod>2021-03-22</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://ltfred.github.io/posts/b85c60c3.html</loc>
-    
-    <lastmod>2021-03-15</lastmod>
     
   </url>
   
@@ -67,28 +67,7 @@
 
   
   <url>
-    <loc>https://ltfred.github.io/tags/Hexo/</loc>
-    <lastmod>2021-06-26</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://ltfred.github.io/tags/Github/</loc>
-    <lastmod>2021-06-26</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://ltfred.github.io/tags/mergo/</loc>
-    <lastmod>2021-06-26</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://ltfred.github.io/tags/Golang/</loc>
     <lastmod>2021-06-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -102,7 +81,28 @@
   </url>
   
   <url>
+    <loc>https://ltfred.github.io/tags/Golang/</loc>
+    <lastmod>2021-06-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://ltfred.github.io/tags/defer/</loc>
+    <lastmod>2021-06-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://ltfred.github.io/tags/mergo/</loc>
+    <lastmod>2021-06-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://ltfred.github.io/tags/Hexo/</loc>
     <lastmod>2021-06-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -111,7 +111,7 @@
 
   
   <url>
-    <loc>https://ltfred.github.io/categories/Hexo/</loc>
+    <loc>https://ltfred.github.io/categories/Github/</loc>
     <lastmod>2021-06-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -125,7 +125,7 @@
   </url>
   
   <url>
-    <loc>https://ltfred.github.io/categories/Github/</loc>
+    <loc>https://ltfred.github.io/categories/Hexo/</loc>
     <lastmod>2021-06-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
