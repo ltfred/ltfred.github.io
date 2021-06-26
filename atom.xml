@@ -66,9 +66,9 @@
       <category term="Golang" scheme="https://ltfred.github.io/categories/Golang/"/>
     
     
-      <category term="goroutine" scheme="https://ltfred.github.io/tags/goroutine/"/>
-    
       <category term="Golang" scheme="https://ltfred.github.io/tags/Golang/"/>
+    
+      <category term="goroutine" scheme="https://ltfred.github.io/tags/goroutine/"/>
     
   </entry>
   
