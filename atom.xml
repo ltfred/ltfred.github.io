@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ltfred.github.io/"/>
-  <updated>2021-04-01T14:58:09.000Z</updated>
+  <updated>2021-06-27T15:34:09.000Z</updated>
   <id>https://ltfred.github.io/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>阿米洛鸳87键樱花粉轴静电容键盘</title>
+    <link href="https://ltfred.github.io/posts/b4986kc7.html"/>
+    <id>https://ltfred.github.io/posts/b4986kc7.html</id>
+    <published>2021-06-27T15:34:09.000Z</published>
+    <updated>2021-06-27T15:34:09.000Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;心心念念的阿米洛键盘终于在6.18入手了，可是花了我几年的积蓄，这次入手的是阿米洛鸳87键静电容樱花粉轴，先来一张整体图：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://z3.ax1x.com/2021/06/27/RYSpzd.jpg&quot; class=&quot;lazyload
+        
+      
+    
+    </summary>
+    
+    
+      <category term="开箱" scheme="https://ltfred.github.io/categories/%E5%BC%80%E7%AE%B1/"/>
+    
+    
+      <category term="varmilo" scheme="https://ltfred.github.io/tags/varmilo/"/>
+    
+      <category term="键盘" scheme="https://ltfred.github.io/tags/%E9%94%AE%E7%9B%98/"/>
+    
+      <category term="阿米洛" scheme="https://ltfred.github.io/tags/%E9%98%BF%E7%B1%B3%E6%B4%9B/"/>
+    
+  </entry>
   
   <entry>
     <title>Go之defer</title>
