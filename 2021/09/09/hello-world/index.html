@@ -202,13 +202,16 @@ setTimeout(function(){preloader.endLoading();}, 3000);</script></div><div class=
       emojiMaps: "",
       enableQQ: true,
       path: window.location.pathname,
+      master: 'cda8ac4f175bfdf3465ca5ae38cc339c'.split(','),
+      friends: ''.split(','),
+      tagMeta: '博主,小伙伴,访客'.split(','),
       requiredFields: ["nick,mail"],
       visitor: false
     }, null))
   }
 
   if (typeof Valine === 'function') initValine() 
-  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+  else getScript('https://cdn.jsdelivr.net/gh/HCLonely/Valine@latest/dist/Valine.min.js').then(initValine)
 }
 
 if ('Valine' === 'Valine' || !false) {
