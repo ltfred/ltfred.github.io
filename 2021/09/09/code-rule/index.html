@@ -1,0 +1,695 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Petrichor の小窝 | Petrichor の小窝</title><meta name="author" content="Petrichor"><meta name="copyright" content="Petrichor"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="代码规范1. 代码风格1.1 格式化 代码都必须用 goimports 格式化，它是 gofmt 的超集。除了能保持和 gofmt 统一的格式化风格之外还能自动导入（移除未使用）包。  1.2 import 规范 使用 goimports 自动格式化引入的包名，import 规范原则上以 goimports 规则为准。  goimports 会自动把依赖包按首字母排序，并对包进行分组管理，通过空行">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Petrichor の小窝">
+<meta property="og:url" content="https://ltfred.github.io/2021/09/09/code-rule/index.html">
+<meta property="og:site_name" content="Petrichor の小窝">
+<meta property="og:description" content="代码规范1. 代码风格1.1 格式化 代码都必须用 goimports 格式化，它是 gofmt 的超集。除了能保持和 gofmt 统一的格式化风格之外还能自动导入（移除未使用）包。  1.2 import 规范 使用 goimports 自动格式化引入的包名，import 规范原则上以 goimports 规则为准。  goimports 会自动把依赖包按首字母排序，并对包进行分组管理，通过空行">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg">
+<meta property="article:published_time" content="2021-09-09T09:46:47.157Z">
+<meta property="article:modified_time" content="2021-09-09T09:46:52.648Z">
+<meta property="article:author" content="Petrichor">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://ltfred.github.io/2021/09/09/code-rule/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"top-center"},
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Petrichor の小窝',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-09-09 17:46:52'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    document.addEventListener('pjax:complete', detectApple)})(window)</script><link rel="stylesheet" href="/css/custom.css"  media="defer" onload="this.media='all'"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/css/swiper.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-swiper/lib/swiperstyle.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" media="print" onload="this.media='screen'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/l-lin/font-awesome-animation/dist/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.min.css" media="defer" onload="this.media='all'"><script async src="https://cdn.jsdelivr.net/npm/hexo-butterfly-tag-plugins-plus@latest/lib/carousel-touch.min.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="wizard-scene"><div class="wizard-objects"><div class="wizard-square"></div><div class="wizard-circle"></div><div class="wizard-triangle"></div></div><div class="wizard"><div class="wizard-body"></div><div class="wizard-right-arm"><div class="wizard-right-hand"></div></div><div class="wizard-left-arm"><div class="wizard-left-hand"></div></div><div class="wizard-head"><div class="wizard-beard"></div><div class="wizard-face"><div class="wizard-adds"></div></div><div class="wizard-hat"><div class="wizard-hat-of-the-hat"></div><div class="wizard-four-point-star --first"></div><div class="wizard-four-point-star --second"></div><div class="wizard-four-point-star --third"></div></div></div></div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分来</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 生活</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/photos/"><span> 相册</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-comments"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Petrichor の小窝</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分来</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 生活</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/photos/"><span> 相册</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-comments"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">无题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-09-09T09:46:47.157Z" title="发表于 2021-09-09 17:46:47">2021-09-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-09-09T09:46:52.648Z" title="更新于 2021-09-09 17:46:52">2021-09-09</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">5.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>21分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="代码规范"><a href="#代码规范" class="headerlink" title="代码规范"></a>代码规范</h1><h2 id="1-代码风格"><a href="#1-代码风格" class="headerlink" title="1. 代码风格"></a>1. 代码风格</h2><h3 id="1-1-格式化"><a href="#1-1-格式化" class="headerlink" title="1.1 格式化"></a>1.1 格式化</h3><ul>
+<li>代码都必须用 <code>goimports</code> 格式化，它是 <code>gofmt</code> 的超集。除了能保持和 <code>gofmt</code> 统一的格式化风格之外还能自动导入（移除未使用）包。</li>
+</ul>
+<h3 id="1-2-import-规范"><a href="#1-2-import-规范" class="headerlink" title="1.2 import 规范"></a>1.2 import 规范</h3><ul>
+<li><p>使用 <code>goimports</code> 自动格式化引入的包名，import 规范原则上以 <code>goimports</code> 规则为准。</p>
+</li>
+<li><p><code>goimports</code> 会自动把依赖包按首字母排序，并对包进行分组管理，通过空行隔开，默认分为本地包（标准库、内部包）、第三方包。</p>
+</li>
+<li><p>标准包永远位于最上面的第一组。</p>
+</li>
+<li><p>内部包是指不能被外部 import 的包，如 GoPath 模式下的包名或者非域名开头的当前项目的 GoModules 包名。</p>
+</li>
+<li><p>带域名的包名都属于第三方包，如 git.code.oa.com/xxx/xxx，github.com/xxx/xxx，不用区分是否是当前项目内部的包。</p>
+</li>
+<li><p><code>goimports</code> 默认最少分成本地包和第三方包两大类，这两类包必须分开不能放在一起。本地包或者第三方包内部可以继续按实际情况细分不同子类。</p>
+</li>
+<li><p>不要使用相对路径引入包：</p>
+</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 不要采用这种方式</span></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;../net&quot;</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>应该使用完整的路径引入包：</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;xxxx.com/proj/net&quot;</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>包名和 git 路径名不一致时，或者多个相同包名冲突时，使用别名代替：</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    opentracing <span class="string">&quot;github.com/opentracing/opentracing-go&quot;</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h5 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h5><p><a target="_blank" rel="noopener" href="https://golang.org/doc/effective_go#formatting">https://golang.org/doc/effective_go#formatting</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/golang/go/wiki/CodeReviewComments#gofmt">https://github.com/golang/go/wiki/CodeReviewComments#gofmt</a></p>
+<p><a target="_blank" rel="noopener" href="https://pkg.go.dev/golang.org/x/tools/cmd/goimports">https://pkg.go.dev/golang.org/x/tools/cmd/goimports</a></p>
+<h3 id="1-3-换行"><a href="#1-3-换行" class="headerlink" title="1.3 换行"></a>1.3 换行</h3><ul>
+<li>建议一行代码不要超过<code>120列</code>，超过的情况，使用合理的换行方法换行。</li>
+<li>例外场景：<ul>
+<li>import 模块语句</li>
+<li>工具生成代码</li>
+<li>struct tag</li>
+</ul>
+</li>
+</ul>
+<h5 id="参考：-1"><a href="#参考：-1" class="headerlink" title="参考："></a>参考：</h5><p><a target="_blank" rel="noopener" href="https://github.com/golang/go/wiki/CodeReviewComments#line-length">https://github.com/golang/go/wiki/CodeReviewComments#line-length</a></p>
+<h3 id="1-4-括号和空格"><a href="#1-4-括号和空格" class="headerlink" title="1.4 括号和空格"></a>1.4 括号和空格</h3><ul>
+<li><p>遵循 <code>goimports</code> 的逻辑。</p>
+</li>
+<li><p>运算符和操作数之间要留空格。</p>
+</li>
+<li><p>作为输入参数或者数组下标时，运算符和运算数之间不需要空格，紧凑展示。</p>
+</li>
+</ul>
+<h3 id="1-5-错误处理"><a href="#1-5-错误处理" class="headerlink" title="1.5 错误处理"></a>1.5 错误处理</h3><h5 id="参考：-2"><a href="#参考：-2" class="headerlink" title="参考："></a>参考：</h5><p><a target="_blank" rel="noopener" href="https://github.com/golang/go/wiki/CodeReviewComments#handle-errors">https://github.com/golang/go/wiki/CodeReviewComments#handle-errors</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/uber-go/guide/blob/master/style.md#dont-panic">https://github.com/uber-go/guide/blob/master/style.md#dont-panic</a></p>
+<p><a target="_blank" rel="noopener" href="https://golang.org/doc/effective_go#errors">https://golang.org/doc/effective_go#errors</a></p>
+<p><a target="_blank" rel="noopener" href="https://golang.org/doc/effective_go#control-structures">https://golang.org/doc/effective_go#control-structures</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow">https://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow</a></p>
+<p><a target="_blank" rel="noopener" href="https://golang.org/doc/effective_go#interface_conversions">https://golang.org/doc/effective_go#interface_conversions</a></p>
+<h4 id="1-5-1-error-处理"><a href="#1-5-1-error-处理" class="headerlink" title="1.5.1 error 处理"></a>1.5.1 error 处理</h4><ul>
+<li><p><code>error</code> 作为函数的值返回，必须对 <code>error</code> 进行处理, 或将返回值赋值给明确忽略。对于 <code>defer xx.Close()</code>可以不用显式处理。</p>
+</li>
+<li><p><code>error</code> 作为函数的值返回且有多个返回值的时候，<code>error</code> 必须是最后一个参数。</p>
+</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 不要采用这种方式</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">do</span><span class="params">()</span> <span class="params">(error, <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 要采用下面的方式</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">do</span><span class="params">()</span> <span class="params">(<span class="keyword">int</span>, error)</span></span> &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>错误描述不需要标点结尾。</p>
+</li>
+<li><p>采用独立的错误流进行处理。</p>
+</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 不要采用这种方式</span></span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    <span class="comment">// error handling</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// normal code</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 而要采用下面的方式</span></span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    <span class="comment">// error handling</span></span><br><span class="line">    <span class="keyword">return</span> <span class="comment">// or continue, etc.</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// normal code</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果返回值需要初始化，则采用下面的方式：</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x, err := f()</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    <span class="comment">// error handling</span></span><br><span class="line">    <span class="keyword">return</span> <span class="comment">// or continue, etc.</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// use x</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>错误返回的判断独立处理，不与其他变量组合逻辑判断。</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 不要采用这种方式：</span></span><br><span class="line">x, y, err := f()</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> || y == <span class="literal">nil</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> err   <span class="comment">// 当y与err都为空时，函数的调用者会出现错误的调用逻辑</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 应当使用如下方式：</span></span><br><span class="line">x, y, err := f()</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> err</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> y == <span class="literal">nil</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> fmt.Errorf(<span class="string">&quot;some error&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="1-5-2-panic-处理"><a href="#1-5-2-panic-处理" class="headerlink" title="1.5.2 panic 处理"></a>1.5.2 panic 处理</h4><ul>
+<li><p>在业务逻辑处理中禁止使用 <code>panic</code>。</p>
+</li>
+<li><p>在 <code>main</code> 包中只有当完全不可运行的情况可使用 <code>panic</code>，例如：文件无法打开，数据库无法连接导致程序无法正常运行。</p>
+</li>
+<li><p>对于其它的包，可导出的接口一定不能有 <code>panic</code>；在包内传递错误时，不推荐使用 <code>panic</code> 来传递 <code>error</code>。</p>
+</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 不推荐为传递error而在包内使用panic,以下为示例</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// PError 包内定义的错误类型</span></span><br><span class="line"><span class="keyword">type</span> PError <span class="keyword">string</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Error error接口方法</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(e PError)</span> <span class="title">Error</span><span class="params">()</span> <span class="title">string</span></span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">string</span>(e)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">do</span><span class="params">(str <span class="keyword">string</span>)</span></span> &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="comment">// 此处的panic用于传递error</span></span><br><span class="line">    <span class="built_in">panic</span>(PError(<span class="string">&quot;错误信息&quot;</span>))</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Do 包级访问入口</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Do</span><span class="params">(str <span class="keyword">string</span>)</span> <span class="params">(err error)</span></span> &#123;</span><br><span class="line">    <span class="keyword">defer</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">if</span> e := <span class="built_in">recover</span>(); e != <span class="literal">nil</span> &#123;</span><br><span class="line">            err = e.(PError)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;()</span><br><span class="line">    do(str)</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>panic</code> 捕获只能到 <code>goroutine</code> 最顶层，每个自行启动的 <code>goroutine</code>，必须在入口处捕获 <code>panic</code>，并打印详细堆栈信息或进行其它处理。</li>
+</ul>
+<h4 id="1-5-3-recover-处理"><a href="#1-5-3-recover-处理" class="headerlink" title="1.5.3 recover 处理"></a>1.5.3 recover 处理</h4><ul>
+<li><p><code>recover</code> 用于捕获 <code>runtime</code> 的异常，禁止滥用 <code>recover</code>。</p>
+</li>
+<li><p>必须在 <code>defer</code> 中使用，一般用来捕获程序运行期间发生异常抛出的 <code>panic</code> 或程序主动抛出的 <code>panic</code>。</p>
+</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;log&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">defer</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">if</span> err := <span class="built_in">recover</span>(); err != <span class="literal">nil</span> &#123;</span><br><span class="line">            <span class="comment">// do something or record log</span></span><br><span class="line">            log.Println(<span class="string">&quot;exec panic error: &quot;</span>, err)</span><br><span class="line">            <span class="comment">// log.Println(debug.Stack())</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;()</span><br><span class="line">    </span><br><span class="line">    getOne()</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">panic</span>(<span class="number">11</span>) <span class="comment">//手动抛出panic</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// getOne 模拟slice越界 runtime运行时抛出的panic</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">getOne</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">defer</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">if</span> err := <span class="built_in">recover</span>(); err != <span class="literal">nil</span> &#123;</span><br><span class="line">            <span class="comment">// do something or record log</span></span><br><span class="line">            log.Println(<span class="string">&quot;exec panic error: &quot;</span>, err)</span><br><span class="line">            <span class="comment">// log.Println(debug.Stack())</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;()</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> arr = []<span class="keyword">string</span>&#123;<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>, <span class="string">&quot;c&quot;</span>&#125;</span><br><span class="line">    log.Println(<span class="string">&quot;hello,&quot;</span>, arr[<span class="number">4</span>])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 执行结果：</span></span><br><span class="line"><span class="comment">// 2020/01/02 17:18:53 exec panic error:  runtime error: index out of range</span></span><br><span class="line"><span class="comment">// 2020/01/02 17:18:53 exec panic error:  11</span></span><br></pre></td></tr></table></figure>
+<h3 id="1-6-单元测试"><a href="#1-6-单元测试" class="headerlink" title="1.6 单元测试"></a>1.6 单元测试</h3><ul>
+<li><p>每个业务代码都应该有单元测试。</p>
+</li>
+<li><p>单元测试文件名命名规范为 <code>example_test.go</code>。</p>
+</li>
+<li><p>测试用例的函数名称必须以 <code>Test</code> 开头，例如 <code>TestExample</code>。</p>
+</li>
+<li><p>由于单测文件内的函数都是不对外的，所有可导出函数可以没有注释，但是结构体定义时尽量不要导出。</p>
+</li>
+</ul>
+<h3 id="1-7-类型断言失败处理"><a href="#1-7-类型断言失败处理" class="headerlink" title="1.7 类型断言失败处理"></a>1.7 类型断言失败处理</h3><ul>
+<li><code>type assertion</code> 的单个返回值形式针对不正确的类型将产生 <code>panic</code>。因此，请始终使用 <code>“comma ok”</code> 的惯用法。</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 不要采用这种方式</span></span><br><span class="line">t := i.(<span class="keyword">string</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 而要采用下面的方式</span></span><br><span class="line">t, ok := i.(<span class="keyword">string</span>)</span><br><span class="line"><span class="keyword">if</span> !ok &#123;</span><br><span class="line">    <span class="comment">// 优雅地处理错误</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-注释"><a href="#2-注释" class="headerlink" title="2. 注释"></a>2. 注释</h2><p>在编码阶段同步写好变量、函数、包注释，注释可以通过 <code>godoc</code> 导出生成文档。</p>
+<h5 id="参考：-3"><a href="#参考：-3" class="headerlink" title="参考："></a>参考：</h5><p><a target="_blank" rel="noopener" href="https://golang.org/doc/effective_go#commentary">https://golang.org/doc/effective_go#commentary</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/golang/go/wiki/CodeReviewComments#comment-sentences">https://github.com/golang/go/wiki/CodeReviewComments#comment-sentences</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/35591301/function-name-in-comment">https://stackoverflow.com/questions/35591301/function-name-in-comment</a></p>
+<h3 id="2-1-包注释"><a href="#2-1-包注释" class="headerlink" title="2.1 包注释"></a>2.1 包注释</h3><ul>
+<li><p>每个包都应该有一个包注释。</p>
+</li>
+<li><p>包如果有多个 go 文件，只需要出现在一个 go 文件中（一般是和包同名的文件）即可，格式为：“// Package 包名 包信息描述”。</p>
+</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Package math provides basic constants and mathematical functions. (不导出的包[不开源或其他项目使用]，可直接做中文描述)</span></span><br><span class="line"><span class="keyword">package</span> math</span><br><span class="line"></span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">Package template implements data-driven templates for generating textual (不导出的包[不开源或其他项目使用]，可直接做中文描述)</span></span><br><span class="line"><span class="comment">output such as HTML.</span></span><br><span class="line"><span class="comment">....</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">package</span> template</span><br></pre></td></tr></table></figure>
+<p><strong>⚠️注意：开启了相关插件的创建文件方式，应关闭该插件</strong>。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @Author: xxx</span></span><br><span class="line"><span class="comment"> * @Date: 2021/9/6 1:53 下午</span></span><br><span class="line"><span class="comment"> * @Description: xxx</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> boot</span><br><span class="line"></span><br><span class="line"><span class="comment">// 改为</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 项目启动包</span></span><br><span class="line"><span class="keyword">package</span> boot</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-结构体注释"><a href="#2-2-结构体注释" class="headerlink" title="2.2 结构体注释"></a>2.2 结构体注释</h3><ul>
+<li><p>每个需要导出的自定义结构体或者接口都必须有注释说明。</p>
+</li>
+<li><p>注释对结构进行简要介绍，放在结构体定义的前一行。</p>
+</li>
+<li><p>格式为：”// 结构体名 结构体信息描述”<strong>（仅格式限于导出包，业务代码可直接做信息描述）</strong>。</p>
+</li>
+<li><p>结构体内的可导出成员变量名，如果是个生僻词，或者意义不明确的词，就必须要给出注释，放在成员变量的前一行或同一行的末尾。</p>
+</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 用户结构定义了用户基础信息</span></span><br><span class="line"><span class="keyword">type</span> User <span class="keyword">struct</span> &#123;</span><br><span class="line">    Name  <span class="keyword">string</span></span><br><span class="line">    Email <span class="keyword">string</span></span><br><span class="line">    Demographic <span class="keyword">string</span>  <span class="comment">// 族群</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-3-方法注释"><a href="#2-3-方法注释" class="headerlink" title="2.3 方法注释"></a>2.3 方法注释</h3><ul>
+<li><p>每个需要导出的函数或者方法（结构体或者接口下的函数称为方法）都必须有注释。注意，如果方法的接收器为不可导出类型，可以不注释，但需要质疑该方法可导出的必要性。</p>
+</li>
+<li><p>注释描述函数或方法功能、调用方等信息。</p>
+</li>
+<li><p>格式为：”// 方法名 函数信息描述” <strong>（仅格式限于导出包，业务代码可直接做信息描述）</strong>。</p>
+</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 是属性数据层操作类的工厂方法</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewAttrModel</span><span class="params">(ctx *common.Context)</span> *<span class="title">AttrModel</span></span> &#123;</span><br><span class="line">    <span class="comment">// TODO</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-4-变量和常量注释"><a href="#2-4-变量和常量注释" class="headerlink" title="2.4 变量和常量注释"></a>2.4 变量和常量注释</h3><ul>
+<li><p>每个需要导出的常量和变量都必须有注释说明。</p>
+</li>
+<li><p>该注释对常量或变量进行简要介绍，放在常量或者变量定义的前一行。</p>
+</li>
+<li><p>大块常量或变量定义时，可在前面注释一个总的说明，然后每一行常量的末尾详细注释该常量的定义。</p>
+</li>
+<li><p>格式为：”// 变量名 变量信息描述”，斜线后面紧跟一个空格 <strong>（此格式仅限于导出包，业务代码可直接做信息描述）</strong>。</p>
+</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 配置文件的命令行参数名</span></span><br><span class="line"><span class="keyword">const</span> FlagConfigFile = <span class="string">&quot;--config&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 命令行参数</span></span><br><span class="line"><span class="keyword">const</span> (</span><br><span class="line">    FlagConfigFile1 = <span class="string">&quot;--config&quot;</span> <span class="comment">// 配置文件的命令行参数名1</span></span><br><span class="line">    FlagConfigFile2 = <span class="string">&quot;--config&quot;</span> <span class="comment">// 配置文件的命令行参数名2</span></span><br><span class="line">    FlagConfigFile3 = <span class="string">&quot;--config&quot;</span> <span class="comment">// 配置文件的命令行参数名3</span></span><br><span class="line">    FlagConfigFile4 = <span class="string">&quot;--config&quot;</span> <span class="comment">// 配置文件的命令行参数名4</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 返回指定用户名的完整名称</span></span><br><span class="line"><span class="keyword">var</span> FullName = <span class="function"><span class="keyword">func</span><span class="params">(username <span class="keyword">string</span>)</span> <span class="title">string</span></span> &#123;</span><br><span class="line">    <span class="keyword">return</span> fmt.Sprintf(<span class="string">&quot;fake-%s&quot;</span>, username)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-5-类型注释"><a href="#2-5-类型注释" class="headerlink" title="2.5 类型注释"></a>2.5 类型注释</h3><ul>
+<li><p>每个需要导出的类型定义（type definition）和类型别名（type aliases）都必须有注释说明。</p>
+</li>
+<li><p>该注释对类型进行简要介绍，放在定义的前一行。</p>
+</li>
+<li><p>格式为：”// 类型名 类型信息描述” <strong>（仅格式限于导出包，业务代码可直接做信息描述）</strong>。</p>
+</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 存储类型</span></span><br><span class="line"><span class="keyword">type</span> StorageClass <span class="keyword">string</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 标准库时间的类型别名</span></span><br><span class="line"><span class="keyword">type</span> FakeTime = time.Time</span><br></pre></td></tr></table></figure>
+<h2 id="3-命名规范"><a href="#3-命名规范" class="headerlink" title="3. 命名规范"></a>3. 命名规范</h2><p>命名是代码规范中很重要的一部分，统一的命名规范有利于提高代码的可读性，好的命名仅仅通过命名就可以获取到足够多的信息。</p>
+<h5 id="参考：-4"><a href="#参考：-4" class="headerlink" title="参考："></a>参考：</h5><p><a target="_blank" rel="noopener" href="https://golang.org/doc/effective_go#package-names">https://golang.org/doc/effective_go#package-names</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.golang.org/package-names">https://blog.golang.org/package-names</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/golang/go/wiki/CodeReviewComments#package-names">https://github.com/golang/go/wiki/CodeReviewComments#package-names</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/golang/go/wiki/CodeReviewComments#variable-names">https://github.com/golang/go/wiki/CodeReviewComments#variable-names</a></p>
+<p><a target="_blank" rel="noopener" href="https://golang.org/doc/effective_go#interface-names">https://golang.org/doc/effective_go#interface-names</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/golang/go/wiki/CodeReviewComments#initialisms">https://github.com/golang/go/wiki/CodeReviewComments#initialisms</a></p>
+<p><a target="_blank" rel="noopener" href="https://golang.org/doc/effective_go#mixed-caps">https://golang.org/doc/effective_go#mixed-caps</a></p>
+<h3 id="3-1-包命名"><a href="#3-1-包命名" class="headerlink" title="3.1 包命名"></a>3.1 包命名</h3><ul>
+<li>保持 <code>package</code> 的名字和目录一致。</li>
+<li>尽量采取有意义、简短的包名，尽量不要和标准库冲突。</li>
+<li>包名应该为小写单词，不要使用下划线或者混合大小写，使用多级目录来划分层级。</li>
+<li>简单明了的包命名，如：<code>time</code>、<code>list</code>、<code>http</code>。</li>
+<li>包名不允许复数。</li>
+<li>不要使用无意义的包名，如：<code>util</code>、<code>common</code>、<code>misc</code>、<code>global</code>。<code>package</code>名字应该追求清晰且越来越收敛，符合‘单一职责’原则。而不是像<code>common</code>一样，什么都能往里面放，越来越膨胀，让依赖关系变得复杂，不利于阅读、复用、重构。注意，<code>xx/util/encryption</code>这样的包名是允许的。</li>
+</ul>
+<h3 id="3-2-文件命名"><a href="#3-2-文件命名" class="headerlink" title="3.2 文件命名"></a>3.2 文件命名</h3><ul>
+<li><p>采用有意义，简短的文件名。</p>
+</li>
+<li><p>文件名应该采用小写，多个单词用下划线隔开。</p>
+</li>
+</ul>
+<h3 id="3-3-结构体命名"><a href="#3-3-结构体命名" class="headerlink" title="3.3 结构体命名"></a>3.3 结构体命名</h3><ul>
+<li><p>采用驼峰命名方式，首字母根据访问控制采用大写或者小写。</p>
+</li>
+<li><p>结构体名应该是名词或名词短语，如 <code>Customer</code>、<code>WikiPage</code>、<code>Account</code>、<code>AddressParser</code>，它不应是动词。</p>
+</li>
+<li><p>避免使用 <code>Data</code>、<code>Info</code> 这类意义太宽泛的结构体名。</p>
+</li>
+<li><p>结构体的声明和初始化格式采用多行，例如：</p>
+</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 多行声明</span></span><br><span class="line"><span class="keyword">type</span> User <span class="keyword">struct</span> &#123;</span><br><span class="line">    Name  <span class="keyword">string</span></span><br><span class="line">    Email <span class="keyword">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 多行初始化</span></span><br><span class="line">u := User&#123;</span><br><span class="line">    UserName: <span class="string">&quot;john&quot;</span>,</span><br><span class="line">    Email:    <span class="string">&quot;john@example.com&quot;</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-4-变量命名"><a href="#3-4-变量命名" class="headerlink" title="3.4 变量命名"></a>3.4 变量命名</h3><ul>
+<li><p>变量名必须遵循驼峰式，首字母根据访问控制决定使用大写或小写。</p>
+</li>
+<li><p>特有名词时，需要遵循以下规则：</p>
+<ul>
+<li>如果变量为私有，且特有名词为首个单词，则使用小写，如 <code>apiClient</code>；</li>
+<li>其他情况都应该使用该名词原有的写法，如 <code>APIClient</code>、<code>repoID</code>、<code>UserID</code>， <code>ID</code> 是 <code>identifier</code> 单词的缩写；</li>
+<li>错误示例：<code>UrlArray</code>，应该写成 <code>urlArray</code> 或者 <code>URLArray</code>；</li>
+<li>详细的专有名词列表可参考<a target="_blank" rel="noopener" href="https://github.com/golang/lint/blob/738671d3881b9731cc63024d5d88cf28db875626/lint.go#L770">这里</a>。</li>
+</ul>
+</li>
+<li><p>若变量类型为 <code>bool</code> 类型，则名称应以 <code>Has</code>，<code>Is</code>，<code>Can</code> 或者 <code>Allow</code> 开头。</p>
+</li>
+<li><p>私有全局变量和局部变量规范一致，均以小写字母开头。</p>
+</li>
+<li><p>代码生成工具自动生成的代码可排除此规则（如 xxx.pb.go 里面的 Id）。</p>
+</li>
+<li><p>变量名更倾向于选择短命名。特别是对于局部变量。 <code>c</code>比<code>lineCount</code>要好，<code>i</code>比<code>sliceIndex</code>要好。基本原则是：变量的使用和声明的位置越远，变量名就需要具备越强的描述性。</p>
+</li>
+</ul>
+<h3 id="3-5-常量命名"><a href="#3-5-常量命名" class="headerlink" title="3.5 常量命名"></a>3.5 常量命名</h3><ul>
+<li>常量均需使用全部大写字母组成，并使用下划线分词。</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// AppVersion 应用程序版本号定义</span></span><br><span class="line"><span class="keyword">const</span> APP_VERSION = <span class="string">&quot;1.0.0&quot;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果是枚举类型的常量，需要先创建相应类型。</li>
+<li>如果超过了一个常量应该用括号的方法来组织。</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 传输协议</span></span><br><span class="line"><span class="keyword">type</span> Scheme <span class="keyword">string</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> (</span><br><span class="line">    <span class="comment">// 表示HTTP明文传输协议</span></span><br><span class="line">    HTTP Scheme = <span class="string">&quot;http&quot;</span></span><br><span class="line">    <span class="comment">// 表示HTTPS加密传输协议</span></span><br><span class="line">    HTTPS Scheme = <span class="string">&quot;https&quot;</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果模块的功能较为复杂、常量名称容易混淆的情况下，为了更好地区分枚举类型，可以使用完整的前缀。</li>
+<li>枚举的第一个常量应用<code>xxx_UNKNOWN</code>的命名方式，并赋为<code>iota。</code></li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> PullRequestStatus <span class="keyword">int</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> (</span><br><span class="line">    PULL_REQUEST_STATUS_UNKNOWN PullRequestStatus = <span class="literal">iota</span></span><br><span class="line">	PULL_REQUEST_STATUS_CONFLICT</span><br><span class="line">	PULL_REQUEST_STATUS_CHECKING</span><br><span class="line">	PULL_REQUEST_STATUS_MERGEABLE</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h3 id="3-6-函数命名"><a href="#3-6-函数命名" class="headerlink" title="3.6 函数命名"></a>3.6 函数命名</h3><ul>
+<li>函数名必须遵循驼峰式，首字母根据访问控制决定使用大写或小写。</li>
+<li>函数的参数名称应简短有意义。</li>
+</ul>
+<h3 id="3-7-请求参数和返回数据命名"><a href="#3-7-请求参数和返回数据命名" class="headerlink" title="3.7 请求参数和返回数据命名"></a>3.7 请求参数和返回数据命名</h3><ul>
+<li>请求参数和返回数据统一采用小驼峰的命名方式。</li>
+</ul>
+<h3 id="3-8-URL命名"><a href="#3-8-URL命名" class="headerlink" title="3.8 URL命名"></a>3.8 URL命名</h3><ul>
+<li>URL命名采用小写单词，多个单词使用横线连接。</li>
+<li>尽量遵循RESTFul标准。</li>
+</ul>
+<h2 id="4-控制结构"><a href="#4-控制结构" class="headerlink" title="4. 控制结构"></a>4. 控制结构</h2><h3 id="4-1-if"><a href="#4-1-if" class="headerlink" title="4.1 if"></a>4.1 if</h3><ul>
+<li><code>if</code> 对两个值进行判断时，约定如下顺序：变量在左，常量在右：</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 不要采用这种方式</span></span><br><span class="line"><span class="keyword">if</span> <span class="literal">nil</span> != err &#123;</span><br><span class="line">    <span class="comment">// error handling</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不要采用这种方式</span></span><br><span class="line"><span class="keyword">if</span> <span class="number">0</span> == errorCode &#123;</span><br><span class="line">    <span class="comment">// do something</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 而要采用下面的方式</span></span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    <span class="comment">// error handling</span></span><br><span class="line">&#125;   </span><br><span class="line"></span><br><span class="line"><span class="comment">// 而要采用下面的方式</span></span><br><span class="line"><span class="keyword">if</span> errorCode == <span class="number">0</span> &#123;</span><br><span class="line">    <span class="comment">// do something</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>if</code> 对于bool类型的变量，应直接进行真假判断：</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> allowUserLogin <span class="keyword">bool</span></span><br><span class="line"><span class="comment">// 不要采用这种方式</span></span><br><span class="line"><span class="keyword">if</span> allowUserLogin == <span class="literal">true</span> &#123;</span><br><span class="line">    <span class="comment">// do something</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不要采用这种方式</span></span><br><span class="line"><span class="keyword">if</span> allowUserLogin == <span class="literal">false</span> &#123;</span><br><span class="line">    <span class="comment">// do something</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 而要采用下面的方式</span></span><br><span class="line"><span class="keyword">if</span> allowUserLogin &#123;</span><br><span class="line">    <span class="comment">// do something</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 而要采用下面的方式</span></span><br><span class="line"><span class="keyword">if</span> !allowUserLogin &#123;</span><br><span class="line">    <span class="comment">// do something</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-2-for"><a href="#4-2-for" class="headerlink" title="4.2 for"></a>4.2 for</h3><ul>
+<li>采用短声明建立局部变量：</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sum := <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; i++ &#123;</span><br><span class="line">    sum += <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-3-range"><a href="#4-3-range" class="headerlink" title="4.3 range"></a>4.3 range</h3><ul>
+<li>如果只需要第一项（key），就丢弃第二个：</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> key := <span class="keyword">range</span> m &#123;</span><br><span class="line">    <span class="keyword">if</span> key.expired() &#123;</span><br><span class="line">        <span class="built_in">delete</span>(m, key)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果只需要第二项，则把第一项置为下划线：</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sum := <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> _, value := <span class="keyword">range</span> array &#123;</span><br><span class="line">    sum += value</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-4-switch"><a href="#4-4-switch" class="headerlink" title="4.4 switch"></a>4.4 switch</h3><ul>
+<li>要求必须有 <code>default</code>：</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span> os := runtime.GOOS; os &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;darwin&quot;</span>:</span><br><span class="line">        fmt.Println(<span class="string">&quot;OS X.&quot;</span>)</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;linux&quot;</span>:</span><br><span class="line">        fmt.Println(<span class="string">&quot;Linux.&quot;</span>)</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">        <span class="comment">// freebsd, openbsd,</span></span><br><span class="line">        <span class="comment">// plan9, windows...</span></span><br><span class="line">        fmt.Printf(<span class="string">&quot;%s.\n&quot;</span>, os)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-5-return"><a href="#4-5-return" class="headerlink" title="4.5 return"></a>4.5 return</h3><ul>
+<li>尽早 <code>return</code>，一旦有错误发生，马上返回：</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">f, err := os.Open(name)</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> err</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">defer</span> f.Close()</span><br><span class="line"></span><br><span class="line">d, err := f.Stat()</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> err</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">codeUsing(f, d)</span><br></pre></td></tr></table></figure>
+<h3 id="4-6-goto"><a href="#4-6-goto" class="headerlink" title="4.6 goto"></a>4.6 goto</h3><ul>
+<li>业务代码禁止使用 <code>goto</code>，其他框架或底层源码推荐尽量不用。</li>
+</ul>
+<h2 id="5-函数"><a href="#5-函数" class="headerlink" title="5. 函数"></a>5. 函数</h2><h3 id="5-1-函数参数"><a href="#5-1-函数参数" class="headerlink" title="5.1 函数参数"></a>5.1 函数参数</h3><ul>
+<li>函数返回相同类型的两个或三个参数，或者如果从上下文中不清楚结果的含义，使用命名返回，其它情况不建议使用命名返回。</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Parent1 ...</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(n *Node)</span> <span class="title">Parent1</span><span class="params">()</span> *<span class="title">Node</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Parent2 ...</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(n *Node)</span> <span class="title">Parent2</span><span class="params">()</span> <span class="params">(*Node, error)</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Location ...</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(f *Foo)</span> <span class="title">Location</span><span class="params">()</span> <span class="params">(lat, long <span class="keyword">float64</span>, err error)</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>传入变量和返回变量以小写字母开头。</p>
+</li>
+<li><p>参数数量均不能超过<code>5个</code>，超过<code>5个</code>使用结构体。</p>
+</li>
+<li><p>尽量用值传递，非指针传递。</p>
+</li>
+<li><p>传入参数是 <code>map</code>，<code>slice</code>，<code>chan</code>，<code>interface</code> 不要传递指针。</p>
+</li>
+</ul>
+<h3 id="5-2-defer"><a href="#5-2-defer" class="headerlink" title="5.2 defer"></a>5.2 defer</h3><ul>
+<li><p>当存在资源管理时，应紧跟 <code>defer</code> 函数进行资源的释放。</p>
+</li>
+<li><p>判断是否有错误发生之后，再 <code>defer</code> 释放资源。</p>
+</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">resp, err := http.Get(url)</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> err</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 如果操作成功，再defer Close()</span></span><br><span class="line"><span class="keyword">defer</span> resp.Body.Close()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>禁止在循环中使用 <code>defer</code>，举例如下：</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 不要这样使用</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">filterSomething</span><span class="params">(values []<span class="keyword">string</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> values &#123;</span><br><span class="line">        fields, err := db.Query(v) <span class="comment">// 示例，实际不要这么查询，防止sql注入</span></span><br><span class="line">        <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">            <span class="comment">// xxx</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">defer</span> fields.Close()</span><br><span class="line">        <span class="comment">// 继续使用fields</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 应当使用如下的方式：</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">filterSomething</span><span class="params">(values []<span class="keyword">string</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> _, v := <span class="keyword">range</span> values &#123;</span><br><span class="line">        <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">            fields, err := db.Query(v) <span class="comment">// 示例，实际不要这么查询，防止sql注入</span></span><br><span class="line">            <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">            ...</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">defer</span> fields.Close()</span><br><span class="line">            <span class="comment">// 继续使用fields</span></span><br><span class="line">        &#125;()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="5-3-方法的接收器"><a href="#5-3-方法的接收器" class="headerlink" title="5.3 方法的接收器"></a>5.3 方法的接收器</h3><ul>
+<li><p>推荐以类名第一个英文首字母的小写作为接收器的命名。</p>
+</li>
+<li><p>命名不能采用 <code>me</code>，<code>this</code>，<code>self</code> 这类易混淆名称。</p>
+</li>
+</ul>
+<h3 id="5-4-代码行数"><a href="#5-4-代码行数" class="headerlink" title="5.4 代码行数"></a>5.4 代码行数</h3><ul>
+<li><p>文件长度不能超过<code>1500行</code>。</p>
+</li>
+<li><p>函数长度不能超过<code>100行</code>。</p>
+</li>
+</ul>
+<h3 id="5-5-嵌套"><a href="#5-5-嵌套" class="headerlink" title="5.5 嵌套"></a>5.5 嵌套</h3><ul>
+<li>嵌套深度不能超过<code>4层</code>：</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 添加成功或出错</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *BookingService)</span> <span class="title">AddArea</span><span class="params">(areas ...<span class="keyword">string</span>)</span> <span class="title">error</span></span> &#123;</span><br><span class="line">    s.Lock()</span><br><span class="line">    <span class="keyword">defer</span> s.Unlock()</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> _, area := <span class="keyword">range</span> areas &#123;</span><br><span class="line">        <span class="keyword">for</span> _, has := <span class="keyword">range</span> s.areas &#123;</span><br><span class="line">            <span class="keyword">if</span> area == has &#123;</span><br><span class="line">                <span class="keyword">return</span> srverr.ErrAreaConflict</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        s.areas = <span class="built_in">append</span>(s.areas, area)</span><br><span class="line">        s.areaOrders[area] = <span class="built_in">new</span>(order.AreaOrder)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 建议调整为这样：</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 添加成功或出错</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *BookingService)</span> <span class="title">AddArea</span><span class="params">(areas ...<span class="keyword">string</span>)</span> <span class="title">error</span></span> &#123;</span><br><span class="line">    s.Lock()</span><br><span class="line">    <span class="keyword">defer</span> s.Unlock()</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> _, area := <span class="keyword">range</span> areas &#123;</span><br><span class="line">        <span class="keyword">if</span> s.HasArea(area) &#123;</span><br><span class="line">            <span class="keyword">return</span> srverr.ErrAreaConflict</span><br><span class="line">        &#125;</span><br><span class="line">        s.areas = <span class="built_in">append</span>(s.areas, area)</span><br><span class="line">        s.areaOrders[area] = <span class="built_in">new</span>(order.AreaOrder)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// HasArea ...</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *BookingService)</span> <span class="title">HasArea</span><span class="params">(area <span class="keyword">string</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> _, has := <span class="keyword">range</span> s.areas &#123;</span><br><span class="line">        <span class="keyword">if</span> area == has &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="5-6-变量声明"><a href="#5-6-变量声明" class="headerlink" title="5.6 变量声明"></a>5.6 变量声明</h3><ul>
+<li>变量声明尽量放在变量第一次使用前面，就近原则。</li>
+</ul>
+<h3 id="5-7-魔法数字"><a href="#5-7-魔法数字" class="headerlink" title="5.7 魔法数字"></a>5.7 魔法数字</h3><ul>
+<li>如果魔法数字出现超过<code>2次</code>，则禁止使用。</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">getArea</span><span class="params">(r <span class="keyword">float64</span>)</span> <span class="title">float64</span></span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">3.14</span> * r * r</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">getLength</span><span class="params">(r <span class="keyword">float64</span>)</span> <span class="title">float64</span></span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">3.14</span> * <span class="number">2</span> * r</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>用一个常量代替：</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> PI = <span class="number">3.14</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">getArea</span><span class="params">(r <span class="keyword">float64</span>)</span> <span class="title">float64</span></span> &#123;</span><br><span class="line">    <span class="keyword">return</span> PI * r * r</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">getLength</span><span class="params">(r <span class="keyword">float64</span>)</span> <span class="title">float64</span></span> &#123;</span><br><span class="line">    <span class="keyword">return</span> PI * <span class="number">2</span> * r</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="6-性能"><a href="#6-性能" class="headerlink" title="6. 性能"></a>6. 性能</h2><h3 id="6-1-优先使用-strconv-而不是-fmt"><a href="#6-1-优先使用-strconv-而不是-fmt" class="headerlink" title="6.1 优先使用 strconv 而不是 fmt"></a>6.1 优先使用 strconv 而不是 fmt</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i := <span class="number">0</span>; i &lt; b.N; i++ &#123;</span><br><span class="line">  s := fmt.Sprint(rand.Int())</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// BenchmarkFmtSprint-4    143 ns/op    2 allocs/op</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i := <span class="number">0</span>; i &lt; b.N; i++ &#123;</span><br><span class="line">  s := strconv.Itoa(rand.Int())</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//BenchmarkStrconv-4    64.2 ns/op    1 allocs/op</span></span><br></pre></td></tr></table></figure>
+<h3 id="6-2-指定切片容量"><a href="#6-2-指定切片容量" class="headerlink" title="6.2 指定切片容量"></a>6.2 指定切片容量</h3><ul>
+<li>在尽可能的情况下，在使用<code>make()</code>初始化切片时提供容量信息，特别是在追加切片时。</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">make</span>([]T, length, capacity)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>编译器将为提供给make()的slice的容量分配足够的内存，<br>  这意味着后续的append()`操作将导致零分配（直到slice的长度与容量匹配，在此之后，任何append都可能调整大小以容纳其他元素）</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> n := <span class="number">0</span>; n &lt; b.N; n++ &#123;</span><br><span class="line">  data := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">0</span>)</span><br><span class="line">  <span class="keyword">for</span> k := <span class="number">0</span>; k &lt; size; k++&#123;</span><br><span class="line">    data = <span class="built_in">append</span>(data, k)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// BenchmarkBad-4    100000000    2.48s</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> n := <span class="number">0</span>; n &lt; b.N; n++ &#123;</span><br><span class="line">  data := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">0</span>, size)</span><br><span class="line">  <span class="keyword">for</span> k := <span class="number">0</span>; k &lt; size; k++&#123;</span><br><span class="line">    data = <span class="built_in">append</span>(data, k)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// BenchmarkGood-4   100000000    0.21s</span></span><br></pre></td></tr></table></figure>
+<h3 id="6-3-指定Map容量提示"><a href="#6-3-指定Map容量提示" class="headerlink" title="6.3 指定Map容量提示"></a>6.3 指定Map容量提示</h3><ul>
+<li>在尽可能的情况下，在使用 <code>make()</code> 初始化的时候提供容量信息</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">make</span>(<span class="keyword">map</span>[T1]T2, hint)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>向<code>make()</code>提供容量提示会在初始化时尝试调整<code>map</code>的大小，这将减少在将元素添加到<code>map</code>时为<code>map</code>重新分配内存。<br>  注意，与<code>slices</code>不同。<code>map capacity</code>提示并不保证完全的抢占式分配，而是用于估计所需的<code>hashmap bucket</code>的数量。<br>  因此，在将元素添加到<code>map</code>时，甚至在指定<code>map</code>容量时，仍可能发生分配。</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">m := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]os.FileInfo)</span><br><span class="line"></span><br><span class="line">files, _ := ioutil.ReadDir(<span class="string">&quot;./files&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> _, f := <span class="keyword">range</span> files &#123;</span><br><span class="line">    m[f.Name()] = f</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// m 是在没有大小提示的情况下创建的； 在运行时可能会有更多分配</span></span><br><span class="line"></span><br><span class="line">files, _ := ioutil.ReadDir(<span class="string">&quot;./files&quot;</span>)</span><br><span class="line"></span><br><span class="line">m := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]os.FileInfo, <span class="built_in">len</span>(files))</span><br><span class="line"><span class="keyword">for</span> _, f := <span class="keyword">range</span> files &#123;</span><br><span class="line">    m[f.Name()] = f</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// m 是有大小提示创建的；在运行时可能会有更少的分配</span></span><br></pre></td></tr></table></figure>
+<h2 id="7-其他"><a href="#7-其他" class="headerlink" title="7. 其他"></a>7. 其他</h2><h3 id="7-1-Crypto-Rand（随机加密）"><a href="#7-1-Crypto-Rand（随机加密）" class="headerlink" title="7.1 Crypto Rand（随机加密）"></a>7.1 Crypto Rand（随机加密）</h3><p><strong>参考：</strong></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/golang/go/wiki/CodeReviewComments#crypto-rand">https://github.com/golang/go/wiki/CodeReviewComments#crypto-rand</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/golang/go/issues/11871">https://github.com/golang/go/issues/11871</a></p>
+<p>不要使用 math/rand 生成密钥,使用 crypto/rand 包生成。示例代码： </p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;crypto/rand&quot;</span></span><br><span class="line">	<span class="comment">// &quot;encoding/base64&quot;</span></span><br><span class="line">	<span class="comment">// &quot;encoding/hex&quot;</span></span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Key</span><span class="params">()</span> <span class="title">string</span></span> &#123;</span><br><span class="line">	buf := <span class="built_in">make</span>([]<span class="keyword">byte</span>, <span class="number">16</span>)</span><br><span class="line">	_, err := rand.Read(buf)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="built_in">panic</span>(err)  <span class="comment">// out of randomness, should never happen</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> fmt.Sprintf(<span class="string">&quot;%x&quot;</span>, buf)</span><br><span class="line">	<span class="comment">// or hex.EncodeToString(buf)</span></span><br><span class="line">	<span class="comment">// or base64.StdEncoding.EncodeToString(buf)</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="7-2-Declaring-Empty-Slices（声明空切片）"><a href="#7-2-Declaring-Empty-Slices（声明空切片）" class="headerlink" title="7.2 Declaring Empty Slices（声明空切片）"></a>7.2 Declaring Empty Slices（声明空切片）</h3><p><strong>参考：</strong></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/golang/go/wiki/CodeReviewComments#declaring-empty-slices">https://github.com/golang/go/wiki/CodeReviewComments#declaring-empty-slices</a></p>
+<p><a target="_blank" rel="noopener" href="https://golang.org/doc/effective_go#slices">https://golang.org/doc/effective_go#slices</a></p>
+<p>声明切片时， var t []string 优于 t := []string{}，第一种声明方式为 nil ，第二种声明方式不为nil，使用 len 和 cap 内建函数时它们的效果相同。</p>
+<p>注意在编码成 JSON 时，第一种声明方式的 JSON 对象为 null ，第二种声明方式的 JSON 对象为 [] 。</p>
+<h3 id="7-3-Receiver-Type-（接收者类型）"><a href="#7-3-Receiver-Type-（接收者类型）" class="headerlink" title="7.3 Receiver Type （接收者类型）"></a>7.3 Receiver Type （接收者类型）</h3><p><strong>参考：</strong></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/golang/go/wiki/CodeReviewComments#receiver-type">https://github.com/golang/go/wiki/CodeReviewComments#receiver-type</a></p>
+<p><a target="_blank" rel="noopener" href="https://golang.org/doc/effective_go#pointers_vs_values">https://golang.org/doc/effective_go#pointers_vs_values</a></p>
+<p>在 Go 中为类型定义方法会指定接收者是值类型还是指针类型，无论是什么类型都可以调用方法。区别在于当接收者是值类型时，调用该方法是创建接收者的副本，外部更新不会应用该接收器，接收者是指针类型则会对原值进行拷贝。</p>
+<p>选择值类型还是指针类型有以下基础原则：</p>
+<ul>
+<li>当接收者是 map，func，chan 类型选择值类型作为接收者；当接收者是 slice 并且方法不会 reslice 和 reallocate 时，不要使用指针类型作为接收者。</li>
+<li>当接收者是结构体并且包含了 sync.Mutex 或相似的同步字段，接收者必须是指针避免拷贝。</li>
+<li>若接收者是一个比较大的结构体或 slice ，使用指针更高效。对与大的定义可以将其内部字段或元素作为函数的参数，若觉得太多了则说明需要使用指针接收者。</li>
+<li>不要混合使用接收者类型，选择指针或值类型。</li>
+</ul>
+<h3 id="7-4-Copying（拷贝"><a href="#7-4-Copying（拷贝" class="headerlink" title="7.4 Copying（拷贝)"></a>7.4 Copying（拷贝)</h3><p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/golang/go/wiki/CodeReviewComments#copying">https://github.com/golang/go/wiki/CodeReviewComments#copying</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/uber-go/guide/blob/master/style.md#copy-slices-and-maps-at-boundaries">https://github.com/uber-go/guide/blob/master/style.md#copy-slices-and-maps-at-boundaries</a></p>
+<p>当拷贝包含 slice ，map 等指针类型结构时，要注意拷贝之后的使用对它们的原本是否产生影响。如：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 不推荐 </span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(d *Driver)</span> <span class="title">SetTrips</span><span class="params">(trips []Trip)</span></span> &#123;</span><br><span class="line">  d.trips = trips</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">trips := ...</span><br><span class="line">d1.SetTrips(trips)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Did you mean to modify d1.trips?</span></span><br><span class="line">trips[<span class="number">0</span>] = ...</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 推荐</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(d *Driver)</span> <span class="title">SetTrips</span><span class="params">(trips []Trip)</span></span> &#123;</span><br><span class="line">  d.trips = <span class="built_in">make</span>([]Trip, <span class="built_in">len</span>(trips))</span><br><span class="line">  <span class="built_in">copy</span>(d.trips, trips)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">trips := ...</span><br><span class="line">d1.SetTrips(trips)</span><br><span class="line"></span><br><span class="line"><span class="comment">// We can now modify trips[0] without affecting d1.trips.</span></span><br><span class="line">trips[<span class="number">0</span>] = ...</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Petrichor</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://ltfred.github.io/2021/09/09/code-rule/">https://ltfred.github.io/2021/09/09/code-rule/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://ltfred.github.io" target="_blank">Petrichor の小窝</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wxpayQR.png" target="_blank"><img class="post-qr-code-img" src="/img/wxpayQR.png" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipayQR.png" target="_blank"><img class="post-qr-code-img" src="/img/alipayQR.png" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2021/09/09/hello-world/"><img class="prev-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Hello World</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Petrichor</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ltfred"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/ltfred" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:nuyoah08@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83"><span class="toc-number">1.</span> <span class="toc-text">代码规范</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC"><span class="toc-number">1.1.</span> <span class="toc-text">1. 代码风格</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E6%A0%BC%E5%BC%8F%E5%8C%96"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1 格式化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-import-%E8%A7%84%E8%8C%83"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.2 import 规范</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%82%E8%80%83%EF%BC%9A"><span class="toc-number">1.1.2.0.1.</span> <span class="toc-text">参考：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E6%8D%A2%E8%A1%8C"><span class="toc-number">1.1.3.</span> <span class="toc-text">1.3 换行</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%82%E8%80%83%EF%BC%9A-1"><span class="toc-number">1.1.3.0.1.</span> <span class="toc-text">参考：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-%E6%8B%AC%E5%8F%B7%E5%92%8C%E7%A9%BA%E6%A0%BC"><span class="toc-number">1.1.4.</span> <span class="toc-text">1.4 括号和空格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86"><span class="toc-number">1.1.5.</span> <span class="toc-text">1.5 错误处理</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%82%E8%80%83%EF%BC%9A-2"><span class="toc-number">1.1.5.0.1.</span> <span class="toc-text">参考：</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-1-error-%E5%A4%84%E7%90%86"><span class="toc-number">1.1.5.1.</span> <span class="toc-text">1.5.1 error 处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-2-panic-%E5%A4%84%E7%90%86"><span class="toc-number">1.1.5.2.</span> <span class="toc-text">1.5.2 panic 处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-3-recover-%E5%A4%84%E7%90%86"><span class="toc-number">1.1.5.3.</span> <span class="toc-text">1.5.3 recover 处理</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6-%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95"><span class="toc-number">1.1.6.</span> <span class="toc-text">1.6 单元测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-7-%E7%B1%BB%E5%9E%8B%E6%96%AD%E8%A8%80%E5%A4%B1%E8%B4%A5%E5%A4%84%E7%90%86"><span class="toc-number">1.1.7.</span> <span class="toc-text">1.7 类型断言失败处理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%B3%A8%E9%87%8A"><span class="toc-number">1.2.</span> <span class="toc-text">2. 注释</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%82%E8%80%83%EF%BC%9A-3"><span class="toc-number">1.2.0.0.1.</span> <span class="toc-text">参考：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E5%8C%85%E6%B3%A8%E9%87%8A"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 包注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E7%BB%93%E6%9E%84%E4%BD%93%E6%B3%A8%E9%87%8A"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 结构体注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E6%96%B9%E6%B3%95%E6%B3%A8%E9%87%8A"><span class="toc-number">1.2.3.</span> <span class="toc-text">2.3 方法注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E5%8F%98%E9%87%8F%E5%92%8C%E5%B8%B8%E9%87%8F%E6%B3%A8%E9%87%8A"><span class="toc-number">1.2.4.</span> <span class="toc-text">2.4 变量和常量注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-%E7%B1%BB%E5%9E%8B%E6%B3%A8%E9%87%8A"><span class="toc-number">1.2.5.</span> <span class="toc-text">2.5 类型注释</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83"><span class="toc-number">1.3.</span> <span class="toc-text">3. 命名规范</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%82%E8%80%83%EF%BC%9A-4"><span class="toc-number">1.3.0.0.1.</span> <span class="toc-text">参考：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E5%8C%85%E5%91%BD%E5%90%8D"><span class="toc-number">1.3.1.</span> <span class="toc-text">3.1 包命名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E6%96%87%E4%BB%B6%E5%91%BD%E5%90%8D"><span class="toc-number">1.3.2.</span> <span class="toc-text">3.2 文件命名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E7%BB%93%E6%9E%84%E4%BD%93%E5%91%BD%E5%90%8D"><span class="toc-number">1.3.3.</span> <span class="toc-text">3.3 结构体命名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-%E5%8F%98%E9%87%8F%E5%91%BD%E5%90%8D"><span class="toc-number">1.3.4.</span> <span class="toc-text">3.4 变量命名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-%E5%B8%B8%E9%87%8F%E5%91%BD%E5%90%8D"><span class="toc-number">1.3.5.</span> <span class="toc-text">3.5 常量命名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-6-%E5%87%BD%E6%95%B0%E5%91%BD%E5%90%8D"><span class="toc-number">1.3.6.</span> <span class="toc-text">3.6 函数命名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-7-%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0%E5%92%8C%E8%BF%94%E5%9B%9E%E6%95%B0%E6%8D%AE%E5%91%BD%E5%90%8D"><span class="toc-number">1.3.7.</span> <span class="toc-text">3.7 请求参数和返回数据命名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-8-URL%E5%91%BD%E5%90%8D"><span class="toc-number">1.3.8.</span> <span class="toc-text">3.8 URL命名</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%8E%A7%E5%88%B6%E7%BB%93%E6%9E%84"><span class="toc-number">1.4.</span> <span class="toc-text">4. 控制结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-if"><span class="toc-number">1.4.1.</span> <span class="toc-text">4.1 if</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-for"><span class="toc-number">1.4.2.</span> <span class="toc-text">4.2 for</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-range"><span class="toc-number">1.4.3.</span> <span class="toc-text">4.3 range</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-switch"><span class="toc-number">1.4.4.</span> <span class="toc-text">4.4 switch</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-return"><span class="toc-number">1.4.5.</span> <span class="toc-text">4.5 return</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-6-goto"><span class="toc-number">1.4.6.</span> <span class="toc-text">4.6 goto</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%87%BD%E6%95%B0"><span class="toc-number">1.5.</span> <span class="toc-text">5. 函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0"><span class="toc-number">1.5.1.</span> <span class="toc-text">5.1 函数参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-defer"><span class="toc-number">1.5.2.</span> <span class="toc-text">5.2 defer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-%E6%96%B9%E6%B3%95%E7%9A%84%E6%8E%A5%E6%94%B6%E5%99%A8"><span class="toc-number">1.5.3.</span> <span class="toc-text">5.3 方法的接收器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-4-%E4%BB%A3%E7%A0%81%E8%A1%8C%E6%95%B0"><span class="toc-number">1.5.4.</span> <span class="toc-text">5.4 代码行数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-5-%E5%B5%8C%E5%A5%97"><span class="toc-number">1.5.5.</span> <span class="toc-text">5.5 嵌套</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-6-%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E"><span class="toc-number">1.5.6.</span> <span class="toc-text">5.6 变量声明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-7-%E9%AD%94%E6%B3%95%E6%95%B0%E5%AD%97"><span class="toc-number">1.5.7.</span> <span class="toc-text">5.7 魔法数字</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E6%80%A7%E8%83%BD"><span class="toc-number">1.6.</span> <span class="toc-text">6. 性能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-%E4%BC%98%E5%85%88%E4%BD%BF%E7%94%A8-strconv-%E8%80%8C%E4%B8%8D%E6%98%AF-fmt"><span class="toc-number">1.6.1.</span> <span class="toc-text">6.1 优先使用 strconv 而不是 fmt</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-%E6%8C%87%E5%AE%9A%E5%88%87%E7%89%87%E5%AE%B9%E9%87%8F"><span class="toc-number">1.6.2.</span> <span class="toc-text">6.2 指定切片容量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-%E6%8C%87%E5%AE%9AMap%E5%AE%B9%E9%87%8F%E6%8F%90%E7%A4%BA"><span class="toc-number">1.6.3.</span> <span class="toc-text">6.3 指定Map容量提示</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E5%85%B6%E4%BB%96"><span class="toc-number">1.7.</span> <span class="toc-text">7. 其他</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-Crypto-Rand%EF%BC%88%E9%9A%8F%E6%9C%BA%E5%8A%A0%E5%AF%86%EF%BC%89"><span class="toc-number">1.7.1.</span> <span class="toc-text">7.1 Crypto Rand（随机加密）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-Declaring-Empty-Slices%EF%BC%88%E5%A3%B0%E6%98%8E%E7%A9%BA%E5%88%87%E7%89%87%EF%BC%89"><span class="toc-number">1.7.2.</span> <span class="toc-text">7.2 Declaring Empty Slices（声明空切片）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-3-Receiver-Type-%EF%BC%88%E6%8E%A5%E6%94%B6%E8%80%85%E7%B1%BB%E5%9E%8B%EF%BC%89"><span class="toc-number">1.7.3.</span> <span class="toc-text">7.3 Receiver Type （接收者类型）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-4-Copying%EF%BC%88%E6%8B%B7%E8%B4%9D"><span class="toc-number">1.7.4.</span> <span class="toc-text">7.4 Copying（拷贝)</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/09/09/code-rule/" title="无题"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无题"/></a><div class="content"><a class="title" href="/2021/09/09/code-rule/" title="无题">无题</a><time datetime="2021-09-09T09:46:47.157Z" title="发表于 2021-09-09 17:46:47">2021-09-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/09/09/hello-world/" title="Hello World"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/2021/09/09/hello-world/" title="Hello World">Hello World</a><time datetime="2021-09-09T02:34:05.202Z" title="发表于 2021-09-09 10:34:05">2021-09-09</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2021  <i id="heartbeat" class="fa fas fa-heartbeat"></i> Petrichor</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (true){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script async="async">var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> {preloader.endLoading()})
+setTimeout(function(){preloader.endLoading();}, 3000);</script></div><div class="js-pjax"></div><script async src="//at.alicdn.com/t/font_2264842_3izu8i5eoc2.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.removeEventListener('scroll', window.tocScrollFn)
+  window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v5.4.0" title=""><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" data-title="主题版本Butterfly_v3.8.2" title=""><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://www.jsdelivr.com/" style="margin-inline:5px" data-title="本站使用JsDelivr为静态资源提供CDN加速" title=""><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&amp;logo=jsDelivr" alt=""/></a><a class="github-badge" target="_blank" href="https://vercel.com/" style="margin-inline:5px" data-title="本站采用双线部署，默认线路托管于Vercel" title=""><img src="https://img.shields.io/badge/Hosted-Vercel-brightgreen?style=flat&amp;logo=Vercel" alt=""/></a><a class="github-badge" target="_blank" href="https://vercel.com/" style="margin-inline:5px" data-title="本站采用双线部署，联通线路托管于Coding" title=""><img src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&amp;logo=Codio" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Gtihub托管" title=""><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title=""><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></p>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="https://cdn.jsdelivr.net/npm/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.js"></script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2021/09/09/hello-world/" alt=""><img width="48" height="48" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt=""/></a><div class="blog-slider__content"><span class="blog-slider__code">2021-09-09</span><a class="blog-slider__title" href="2021/09/09/hello-world/" alt="">Hello World</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" href="2021/09/09/hello-world/" alt="">详情   </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = '/';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.6/js/swiper.min.js"></script><script defer data-pjax src="https://cdn.jsdelivr.net/npm/hexo-butterfly-swiper/lib/swiper_init.js"></script><div class="js-pjax"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '1s');
+    arr[i].setAttribute('data-wow-delay', '700ms');
+    arr[i].setAttribute('data-wow-offset', '100');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('card-widget');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script></div><script defer src="https://cdn.jsdelivr.net/gh/graingert/wow@1.3.0/dist/wow.min.js"></script><script defer src="https://cdn.jsdelivr.net/npm/hexo-butterfly-wowjs/lib/wow_init.min.js"></script><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --></body></html>
