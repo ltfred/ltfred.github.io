@@ -3,11 +3,11 @@
   <title>Petrichor の小窝</title>
   
   
-  <link href="https://ltfred.github.io/atom.xml" rel="self"/>
+  <link href="https://ltfred.top/atom.xml" rel="self"/>
   
-  <link href="https://ltfred.github.io/"/>
+  <link href="https://ltfred.top/"/>
   <updated>2021-09-09T09:46:52.648Z</updated>
-  <id>https://ltfred.github.io/</id>
+  <id>https://ltfred.top/</id>
   
   <author>
     <name>Petrichor</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title></title>
-    <link href="https://ltfred.github.io/2021/09/09/code-rule/"/>
-    <id>https://ltfred.github.io/2021/09/09/code-rule/</id>
+    <link href="https://ltfred.top/2021/09/09/code-rule/"/>
+    <id>https://ltfred.top/2021/09/09/code-rule/</id>
     <published>2021-09-09T09:46:47.157Z</published>
     <updated>2021-09-09T09:46:52.648Z</updated>
     
@@ -38,8 +38,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="https://ltfred.github.io/2021/09/09/hello-world/"/>
-    <id>https://ltfred.github.io/2021/09/09/hello-world/</id>
+    <link href="https://ltfred.top/2021/09/09/hello-world/"/>
+    <id>https://ltfred.top/2021/09/09/hello-world/</id>
     <published>2021-09-09T02:34:05.202Z</published>
     <updated>2021-09-09T09:35:33.435Z</updated>
     
@@ -53,15 +53,15 @@
     
     
     
-    <category term="❤️ 随笔" scheme="https://ltfred.github.io/categories/%E2%9D%A4%EF%B8%8F-%E9%9A%8F%E7%AC%94/"/>
+    <category term="❤️ 随笔" scheme="https://ltfred.top/categories/%E2%9D%A4%EF%B8%8F-%E9%9A%8F%E7%AC%94/"/>
     
     
   </entry>
   
   <entry>
     <title>golang中的struct比较</title>
-    <link href="https://ltfred.github.io/2021/07/23/go-struct-compare/"/>
-    <id>https://ltfred.github.io/2021/07/23/go-struct-compare/</id>
+    <link href="https://ltfred.top/2021/07/23/go-struct-compare/"/>
+    <id>https://ltfred.top/2021/07/23/go-struct-compare/</id>
     <published>2021-07-23T07:34:09.000Z</published>
     <updated>2021-07-23T07:34:09.000Z</updated>
     
@@ -72,10 +72,10 @@
     
     
     
-    <category term="Golang" scheme="https://ltfred.github.io/categories/Golang/"/>
+    <category term="Golang" scheme="https://ltfred.top/categories/Golang/"/>
     
     
-    <category term="Golang" scheme="https://ltfred.github.io/tags/Golang/"/>
+    <category term="Golang" scheme="https://ltfred.top/tags/Golang/"/>
     
   </entry>
   
