@@ -8342,6 +8342,12 @@ li.categoryBar-list-item {
   -ms-transform: rotate(360deg);
   transform: rotate(360deg);
 }
+#vcomment textarea {
+  background: url("https://cdn.jsdelivr.net/gh/drew233/cdn/20200409110727.webp") 100% 100% no-repeat;
+}
+#vcomment textarea:focus {
+  background-image: none;
+}
 .fireworks {
   position: fixed;
   top: 0;
