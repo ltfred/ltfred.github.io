@@ -6,7 +6,7 @@
   <link href="https://ltfred.top/atom.xml" rel="self"/>
   
   <link href="https://ltfred.top/"/>
-  <updated>2021-10-13T07:45:09.000Z</updated>
+  <updated>2021-10-25T07:34:09.000Z</updated>
   <id>https://ltfred.top/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>unsupported Scan, storing driver.Value type []uint8 into type *[]uint64</title>
+    <link href="https://ltfred.top/posts/rvbd2obt.html"/>
+    <id>https://ltfred.top/posts/rvbd2obt.html</id>
+    <published>2021-10-25T07:34:09.000Z</published>
+    <updated>2021-10-25T07:34:09.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="错误描述"><a href="#错误描述" class="headerlink" title="错误描述"></a>错误描述</h2><p>有以下表：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> test(</span><br><span class="line">    id serial <span class="keyword">primary</span> key,</span><br><span class="line">    count <span class="type">bigint</span>,</span><br><span class="line">    createAt <span class="type">timestamp</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure><p>插入数据：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> test(count, <span class="type">time</span>) <span class="keyword">select</span> random()<span class="operator">*</span><span class="number">10</span>, clock_timestamp() <span class="keyword">from</span> generate_series(<span class="number">1</span>,<span class="number">100</span>);</span><br></pre></td></tr></table></figure><p>执行以下<code>sql</code>：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> to_char(createAt,<span class="string">&#x27;MM&#x27;</span>) <span class="keyword">as</span> mouth, <span class="built_in">array_agg</span>(count) <span class="keyword">as</span> counts <span class="keyword">from</span> test <span class="keyword">group</span> <span class="keyword">by</span> mouth;</span><br></pre></td></tr></table></figure><p>通过DataGrip执行可以看到如下结果：</p><p><img src="https://bu.dusays.com/2021/10/25/f2aa430500f80.png" alt=""></p><p>在<code>go</code>中定义结构体</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> MouthCount <span class="keyword">struct</span> &#123;</span><br><span class="line">    Mouth <span class="keyword">string</span> <span class="string">`db:&quot;mouth&quot;`</span></span><br><span class="line">    Counts []<span class="keyword">uint64</span> <span class="string">`db:&quot;counts&quot;`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>当我门使用<code>sqlx</code>的<code>Scan</code>时会出现以下报错：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unsupported Scan, storing driver.Value type []uint8 into type *[]uint64</span><br></pre></td></tr></table></figure><h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>此时我们需要自定义类型，并实现<code>Scan</code>方法。</p><p>将原结构体改为：</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Counts []<span class="keyword">uint64</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> MouthCount <span class="keyword">struct</span> &#123;</span><br><span class="line">    Mouth <span class="keyword">string</span> <span class="string">`db:&quot;mouth&quot;`</span></span><br><span class="line">    Counts Counts <span class="string">`db:&quot;counts&quot;`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>实现<code>Counts</code>的<code>Scan</code>方法：</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *Counts)</span> <span class="title">Scan</span><span class="params">(src <span class="keyword">interface</span>&#123;&#125;)</span> <span class="title">error</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> counts []<span class="keyword">uint64</span></span><br><span class="line">strArray := <span class="keyword">string</span>(src.([]<span class="keyword">byte</span>))</span><br><span class="line">strArray = strings.TrimLeft(strArray, <span class="string">&quot;&#123;&quot;</span>)</span><br><span class="line">strArray = strings.TrimRight(strArray, <span class="string">&quot;&#125;&quot;</span>)</span><br><span class="line">splitArray := strings.Split(strArray, <span class="string">&quot;,&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> _, v := <span class="keyword">range</span> splitArray &#123;</span><br><span class="line">parseInt, err := strconv.ParseInt(v, <span class="number">10</span>, <span class="number">64</span>)</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line"><span class="keyword">return</span> err</span><br><span class="line">&#125;</span><br><span class="line">counts = <span class="built_in">append</span>(counts, <span class="keyword">uint64</span>(parseInt))</span><br><span class="line">&#125;</span><br><span class="line">*s = ids</span><br><span class="line"><span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>此时再执行就不会报错了，并且会讲<code>sql</code>执行的出的<code>counts</code>结果写到我们的结构体<code>Counts</code>中。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;错误描述&quot;&gt;&lt;a href=&quot;#错误描述&quot; class=&quot;headerlink&quot; title=&quot;错误描述&quot;&gt;&lt;/a&gt;错误描述&lt;/h2&gt;&lt;p&gt;有以下表：&lt;/p&gt;
+&lt;figure class=&quot;highlight sql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;</summary>
+      
+    
+    
+    
+    <category term="知识笔记" scheme="https://ltfred.top/categories/%E7%9F%A5%E8%AF%86%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="Golang" scheme="https://ltfred.top/tags/Golang/"/>
+    
+    <category term="Sqlx" scheme="https://ltfred.top/tags/Sqlx/"/>
+    
+  </entry>
   
   <entry>
     <title>编程字体推荐</title>
