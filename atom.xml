@@ -6,7 +6,7 @@
   <link href="https://ltfred.top/atom.xml" rel="self"/>
   
   <link href="https://ltfred.top/"/>
-  <updated>2021-10-25T07:34:09.000Z</updated>
+  <updated>2021-11-04T02:45:09.000Z</updated>
   <id>https://ltfred.top/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hexo d 部署出错 connect timed out</title>
+    <link href="https://ltfred.top/posts/rvjg26fh.html"/>
+    <id>https://ltfred.top/posts/rvjg26fh.html</id>
+    <published>2021-11-04T02:45:09.000Z</published>
+    <updated>2021-11-04T02:45:09.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="遇到报错"><a href="#遇到报错" class="headerlink" title="遇到报错"></a>遇到报错</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fatal: unable to access &#x27;https://github.com/XXX/XXX.github.io.git/&#x27;: Failed to connect to github.com port 443: Timed out</span><br></pre></td></tr></table></figure><h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><ol><li>先搞清楚自己的梯子在本地的代理地址及端口号，一般为<code>127.0.0.1:xxxx</code></li><li>打开终端，依次输入</li></ol><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.proxy http://127.0.0.1:xxxx</span><br><span class="line"></span><br><span class="line">git config --global https.proxy https://127.0.0.1:xxxx</span><br></pre></td></tr></table></figure><ol><li><code>hexo d</code>即可部署</li><li>部署好后取消代理</li></ol><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --global --<span class="built_in">unset</span> http.proxy</span><br><span class="line"></span><br><span class="line">git config --global --<span class="built_in">unset</span> https.proxy</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;遇到报错&quot;&gt;&lt;a href=&quot;#遇到报错&quot; class=&quot;headerlink&quot; title=&quot;遇到报错&quot;&gt;&lt;/a&gt;遇到报错&lt;/h2&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;</summary>
+      
+    
+    
+    
+    <category term="错误实记" scheme="https://ltfred.top/categories/%E9%94%99%E8%AF%AF%E5%AE%9E%E8%AE%B0/"/>
+    
+    
+    <category term="Hexo" scheme="https://ltfred.top/tags/Hexo/"/>
+    
+  </entry>
   
   <entry>
     <title>unsupported Scan, storing driver.Value type []uint8 into type *[]uint64</title>
@@ -34,7 +58,7 @@
     
     
     
-    <category term="知识笔记" scheme="https://ltfred.top/categories/%E7%9F%A5%E8%AF%86%E7%AC%94%E8%AE%B0/"/>
+    <category term="错误实记" scheme="https://ltfred.top/categories/%E9%94%99%E8%AF%AF%E5%AE%9E%E8%AE%B0/"/>
     
     
     <category term="Golang" scheme="https://ltfred.top/tags/Golang/"/>
