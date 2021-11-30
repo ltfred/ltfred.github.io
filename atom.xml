@@ -18,8 +18,8 @@
   
   <entry>
     <title>Django Database Functions</title>
-    <link href="https://ltfred.top/posts/ven853vh.html"/>
-    <id>https://ltfred.top/posts/ven853vh.html</id>
+    <link href="https://ltfred.top/posts/django-database-func/"/>
+    <id>https://ltfred.top/posts/django-database-func/</id>
     <published>2021-11-30T03:45:09.000Z</published>
     <updated>2021-11-30T03:45:09.000Z</updated>
     
@@ -44,8 +44,8 @@
   
   <entry>
     <title>电影/电视剧网站推荐</title>
-    <link href="https://ltfred.top/posts/vfw83vh6.html"/>
-    <id>https://ltfred.top/posts/vfw83vh6.html</id>
+    <link href="https://ltfred.top/posts/video-website/"/>
+    <id>https://ltfred.top/posts/video-website/</id>
     <published>2021-11-05T07:45:09.000Z</published>
     <updated>2021-11-05T07:45:09.000Z</updated>
     
@@ -72,8 +72,8 @@
   
   <entry>
     <title>hexo d 部署出错 connect timed out</title>
-    <link href="https://ltfred.top/posts/rvjg26fh.html"/>
-    <id>https://ltfred.top/posts/rvjg26fh.html</id>
+    <link href="https://ltfred.top/posts/hexo-deploy-failed/"/>
+    <id>https://ltfred.top/posts/hexo-deploy-failed/</id>
     <published>2021-11-04T02:45:09.000Z</published>
     <updated>2021-11-04T02:45:09.000Z</updated>
     
@@ -96,8 +96,8 @@
   
   <entry>
     <title>unsupported Scan, storing driver.Value type []uint8 into type *[]uint64</title>
-    <link href="https://ltfred.top/posts/rvbd2obt.html"/>
-    <id>https://ltfred.top/posts/rvbd2obt.html</id>
+    <link href="https://ltfred.top/posts/sqlx-scan-error/"/>
+    <id>https://ltfred.top/posts/sqlx-scan-error/</id>
     <published>2021-10-25T07:34:09.000Z</published>
     <updated>2021-10-25T07:34:09.000Z</updated>
     
@@ -123,8 +123,8 @@
   
   <entry>
     <title>编程字体推荐</title>
-    <link href="https://ltfred.top/posts/vaw83vho.html"/>
-    <id>https://ltfred.top/posts/vaw83vho.html</id>
+    <link href="https://ltfred.top/posts/code-font/"/>
+    <id>https://ltfred.top/posts/code-font/</id>
     <published>2021-10-13T07:45:09.000Z</published>
     <updated>2021-11-09T08:45:09.000Z</updated>
     
@@ -147,8 +147,8 @@
   
   <entry>
     <title>vercel自定义域名</title>
-    <link href="https://ltfred.top/posts/a9fubvt3.html"/>
-    <id>https://ltfred.top/posts/a9fubvt3.html</id>
+    <link href="https://ltfred.top/posts/vercel-domain/"/>
+    <id>https://ltfred.top/posts/vercel-domain/</id>
     <published>2021-09-29T07:34:09.000Z</published>
     <updated>2021-09-29T07:34:09.000Z</updated>
     
@@ -172,8 +172,8 @@
   
   <entry>
     <title>golang中的defer</title>
-    <link href="https://ltfred.top/posts/x4d2x0di.html"/>
-    <id>https://ltfred.top/posts/x4d2x0di.html</id>
+    <link href="https://ltfred.top/posts/go-defer/"/>
+    <id>https://ltfred.top/posts/go-defer/</id>
     <published>2021-07-23T07:34:09.000Z</published>
     <updated>2021-07-23T07:34:09.000Z</updated>
     
@@ -196,8 +196,8 @@
   
   <entry>
     <title>golang中的struct比较</title>
-    <link href="https://ltfred.top/posts/rvbd2ofh.html"/>
-    <id>https://ltfred.top/posts/rvbd2ofh.html</id>
+    <link href="https://ltfred.top/posts/go-struct-compare/"/>
+    <id>https://ltfred.top/posts/go-struct-compare/</id>
     <published>2021-07-23T07:34:09.000Z</published>
     <updated>2021-07-23T07:34:09.000Z</updated>
     
@@ -217,8 +217,8 @@
   
   <entry>
     <title>阿米洛鸳87键樱花粉轴静电容键盘开箱</title>
-    <link href="https://ltfred.top/posts/4tksz57h.html"/>
-    <id>https://ltfred.top/posts/4tksz57h.html</id>
+    <link href="https://ltfred.top/posts/varmilo/"/>
+    <id>https://ltfred.top/posts/varmilo/</id>
     <published>2021-06-20T07:34:09.000Z</published>
     <updated>2021-06-20T07:34:09.000Z</updated>
     
@@ -238,8 +238,8 @@
   
   <entry>
     <title>chrome插件推荐</title>
-    <link href="https://ltfred.top/posts/vawg7tho.html"/>
-    <id>https://ltfred.top/posts/vawg7tho.html</id>
+    <link href="https://ltfred.top/posts/chrome-plug/"/>
+    <id>https://ltfred.top/posts/chrome-plug/</id>
     <published>2021-03-13T07:45:09.000Z</published>
     <updated>2021-03-13T07:45:09.000Z</updated>
     
@@ -263,8 +263,8 @@
   
   <entry>
     <title>git中cherry-pick的使用</title>
-    <link href="https://ltfred.top/posts/p1rn77yx.html"/>
-    <id>https://ltfred.top/posts/p1rn77yx.html</id>
+    <link href="https://ltfred.top/posts/git-cherry-pick/"/>
+    <id>https://ltfred.top/posts/git-cherry-pick/</id>
     <published>2020-11-13T07:34:09.000Z</published>
     <updated>2020-11-13T07:34:09.000Z</updated>
     
@@ -284,8 +284,8 @@
   
   <entry>
     <title>国内提高Github访问速度的方法</title>
-    <link href="https://ltfred.top/posts/ly06q147.html"/>
-    <id>https://ltfred.top/posts/ly06q147.html</id>
+    <link href="https://ltfred.top/posts/github-faster/"/>
+    <id>https://ltfred.top/posts/github-faster/</id>
     <published>2020-08-20T07:34:09.000Z</published>
     <updated>2020-08-20T07:34:09.000Z</updated>
     
@@ -310,8 +310,8 @@
   
   <entry>
     <title>git入门最佳实践-2</title>
-    <link href="https://ltfred.top/posts/ocrhe4y3.html"/>
-    <id>https://ltfred.top/posts/ocrhe4y3.html</id>
+    <link href="https://ltfred.top/posts/git-practice-two/"/>
+    <id>https://ltfred.top/posts/git-practice-two/</id>
     <published>2020-08-15T07:34:09.000Z</published>
     <updated>2020-08-15T07:34:09.000Z</updated>
     
@@ -334,8 +334,8 @@
   
   <entry>
     <title>git入门最佳实践-1</title>
-    <link href="https://ltfred.top/posts/5eny8teo.html"/>
-    <id>https://ltfred.top/posts/5eny8teo.html</id>
+    <link href="https://ltfred.top/posts/git-practice-one/"/>
+    <id>https://ltfred.top/posts/git-practice-one/</id>
     <published>2020-08-13T07:34:09.000Z</published>
     <updated>2020-08-13T07:34:09.000Z</updated>
     
@@ -359,8 +359,8 @@
   
   <entry>
     <title>golang中的defer</title>
-    <link href="https://ltfred.top/posts/1mhqkuw9.html"/>
-    <id>https://ltfred.top/posts/1mhqkuw9.html</id>
+    <link href="https://ltfred.top/posts/go-merge/"/>
+    <id>https://ltfred.top/posts/go-merge/</id>
     <published>2020-07-23T07:34:09.000Z</published>
     <updated>2020-07-23T07:34:09.000Z</updated>
     
@@ -383,8 +383,8 @@
   
   <entry>
     <title>阿里云使用宝塔面板部署Hexo博客</title>
-    <link href="https://ltfred.top/posts/6y64b0w3.html"/>
-    <id>https://ltfred.top/posts/6y64b0w3.html</id>
+    <link href="https://ltfred.top/posts/baota-aliyun/"/>
+    <id>https://ltfred.top/posts/baota-aliyun/</id>
     <published>2020-05-13T07:34:09.000Z</published>
     <updated>2020-05-13T07:34:09.000Z</updated>
     
