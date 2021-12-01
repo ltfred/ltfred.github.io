@@ -6,7 +6,7 @@
   <link href="https://ltfred.top/atom.xml" rel="self"/>
   
   <link href="https://ltfred.top/"/>
-  <updated>2021-11-30T03:45:09.000Z</updated>
+  <updated>2021-12-01T02:45:09.000Z</updated>
   <id>https://ltfred.top/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SQL查询每个用户/设备最新的一条纪录</title>
+    <link href="https://ltfred.top/posts/rvth76fh.html"/>
+    <id>https://ltfred.top/posts/rvth76fh.html</id>
+    <published>2021-12-01T02:45:09.000Z</published>
+    <updated>2021-12-01T02:45:09.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>我有以下表和数据(PostgreSQL)：</p><p><img src="https://bu.dusays.com/2021/12/01/ba01802973899.png" alt="image-20211201154033812"></p><p>我想要查询每个设备最新的<code>f_count_at</code>的一条记录，我们可以使用<code>row_number() over(partition by)</code>来实现：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> (<span class="keyword">SELECT</span> f_device_id, f_num, <span class="built_in">row_number</span>() <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> f_device_id <span class="keyword">order</span> <span class="keyword">by</span> f_count_at <span class="keyword">desc</span>) <span class="keyword">as</span> rn <span class="keyword">FROM</span> <span class="keyword">table</span>) t <span class="keyword">WHERE</span> t.rn <span class="operator">=</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure><p>结果如下：</p><p><img src="https://bu.dusays.com/2021/12/01/2abef14c58deb.png" alt="image-20211201154909486"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;我有以下表和数据(PostgreSQL)：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://bu.dusays.com/2021/12/01/ba01802973899.png&quot; alt=&quot;image-20211201154033812&quot;&gt;&lt;/p&gt;
+&lt;p&gt;我想要查询每个设</summary>
+      
+    
+    
+    
+    <category term="知识笔记" scheme="https://ltfred.top/categories/%E7%9F%A5%E8%AF%86%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="SQL" scheme="https://ltfred.top/tags/SQL/"/>
+    
+  </entry>
   
   <entry>
     <title>Django Database Functions</title>
