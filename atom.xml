@@ -6,7 +6,7 @@
   <link href="https://ltfred.top/atom.xml" rel="self"/>
   
   <link href="https://ltfred.top/"/>
-  <updated>2021-12-01T02:45:09.000Z</updated>
+  <updated>2021-12-02T07:45:09.000Z</updated>
   <id>https://ltfred.top/</id>
   
   <author>
@@ -17,20 +17,44 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Alfred workflow 插件推荐</title>
+    <link href="https://ltfred.top/posts/vawj4tho.html"/>
+    <id>https://ltfred.top/posts/vawj4tho.html</id>
+    <published>2021-12-02T07:45:09.000Z</published>
+    <updated>2021-12-02T07:45:09.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="codeVar"><a href="#codeVar" class="headerlink" title="codeVar"></a>codeVar</h3><div class="note default flat"><p>生成变量名，支持大小驼峰，常量，下划线，开发者必备。</p></div><p><img src="https://bu.dusays.com/2021/12/02/9ae6ee46a4aa3.png" alt=""></p><p>地址：<a href="https://github.com/xudaolong/CodeVar">https://github.com/xudaolong/CodeVar</a></p><h3 id="Alfred-Workflows-TimeStamp"><a href="#Alfred-Workflows-TimeStamp" class="headerlink" title="Alfred-Workflows-TimeStamp"></a>Alfred-Workflows-TimeStamp</h3><div class="note default flat"><p>时间戳和时间的转换工具</p></div><p><img src="https://bu.dusays.com/2021/12/02/34b8f5a1e1d2c.png" alt=""></p><p>地址：<a href="https://github.com/WiconWang/Alfred-Workflows-TimeStamp">https://github.com/WiconWang/Alfred-Workflows-TimeStamp</a></p><h3 id="lock"><a href="#lock" class="headerlink" title="lock"></a>lock</h3><div class="note default flat"><p>锁定屏幕，自带插件</p></div><p><img src="https://bu.dusays.com/2021/12/02/b4fbb4819d34f.png" alt=""></p><h3 id="Encode-Decode"><a href="#Encode-Decode" class="headerlink" title="Encode / Decode"></a><a href="https://github.com/willfarrell/alfred-encode-decode-workflow">Encode / Decode</a></h3><div class="note default flat"><p>Base64编解码</p></div><p><img src="https://bu.dusays.com/2021/12/02/b8ca681cd9880.jpg" alt=""></p><p>地址：<a href="https://github.com/willfarrell/alfred-encode-decode-workflow">https://github.com/willfarrell/alfred-encode-decode-workflow</a></p><h3 id="IP-Address"><a href="#IP-Address" class="headerlink" title="IP Address"></a>IP Address</h3><div class="note default flat"><p>快速查询本地ip和公网出口ip</p></div><p><img src="https://bu.dusays.com/2021/12/02/94692b9843b8d.jpg" alt=""></p><h3 id="Youdao-Translate"><a href="#Youdao-Translate" class="headerlink" title="Youdao Translate"></a>Youdao Translate</h3><div class="note default flat"><p>快速有道翻译</p></div><p><img src="https://bu.dusays.com/2021/12/02/de63bf3540cb9.jpg" alt=""></p><p>地址：<a href="https://github.com/wensonsmith/YoudaoTranslator">https://github.com/wensonsmith/YoudaoTranslator</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;codeVar&quot;&gt;&lt;a href=&quot;#codeVar&quot; class=&quot;headerlink&quot; title=&quot;codeVar&quot;&gt;&lt;/a&gt;codeVar&lt;/h3&gt;&lt;div class=&quot;note default flat&quot;&gt;&lt;p&gt;生成变量名，支持大小驼峰，常量，下划线</summary>
+      
+    
+    
+    
+    <category term="干货分享" scheme="https://ltfred.top/categories/%E5%B9%B2%E8%B4%A7%E5%88%86%E4%BA%AB/"/>
+    
+    
+    <category term="Alfred" scheme="https://ltfred.top/tags/Alfred/"/>
+    
+  </entry>
+  
+  <entry>
     <title>SQL查询每个用户/设备最新的一条纪录</title>
     <link href="https://ltfred.top/posts/rvth76fh.html"/>
     <id>https://ltfred.top/posts/rvth76fh.html</id>
     <published>2021-12-01T02:45:09.000Z</published>
     <updated>2021-12-01T02:45:09.000Z</updated>
     
-    <content type="html"><![CDATA[<p>我有以下表和数据(PostgreSQL)：</p><p><img src="https://bu.dusays.com/2021/12/01/ba01802973899.png" alt="image-20211201154033812"></p><p>我想要查询每个设备最新的<code>f_count_at</code>的一条记录，我们可以使用<code>row_number() over(partition by)</code>来实现：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> (<span class="keyword">SELECT</span> f_device_id, f_num, <span class="built_in">row_number</span>() <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> f_device_id <span class="keyword">order</span> <span class="keyword">by</span> f_count_at <span class="keyword">desc</span>) <span class="keyword">as</span> rn <span class="keyword">FROM</span> <span class="keyword">table</span>) t <span class="keyword">WHERE</span> t.rn <span class="operator">=</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure><p>结果如下：</p><p><img src="https://bu.dusays.com/2021/12/01/2abef14c58deb.png" alt="image-20211201154909486"></p>]]></content>
+    <content type="html"><![CDATA[<p>我有以下表和数据(PostgreSQL)：</p><p><img src="https://bu.dusays.com/2021/12/01/ba01802973899.png" alt=""></p><p>我想要查询每个设备最新的<code>f_count_at</code>的一条记录，我们可以使用<code>row_number() over(partition by)</code>来实现：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> (<span class="keyword">SELECT</span> f_device_id, f_num, <span class="built_in">row_number</span>() <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> f_device_id <span class="keyword">order</span> <span class="keyword">by</span> f_count_at <span class="keyword">desc</span>) <span class="keyword">as</span> rn <span class="keyword">FROM</span> <span class="keyword">table</span>) t <span class="keyword">WHERE</span> t.rn <span class="operator">=</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure><p>结果如下：</p><p><img src="https://bu.dusays.com/2021/12/01/2abef14c58deb.png" alt=""></p>]]></content>
     
     
       
       
     <summary type="html">&lt;p&gt;我有以下表和数据(PostgreSQL)：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://bu.dusays.com/2021/12/01/ba01802973899.png&quot; alt=&quot;image-20211201154033812&quot;&gt;&lt;/p&gt;
-&lt;p&gt;我想要查询每个设</summary>
+&lt;p&gt;&lt;img src=&quot;https://bu.dusays.com/2021/12/01/ba01802973899.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;我想要查询每个设备最新的&lt;code&gt;f_count_at&lt;/c</summary>
       
     
     
