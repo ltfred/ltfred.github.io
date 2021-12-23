@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>关于OmniMarkupPreviewer报错404的解决办法</title>
+      <link href="/posts/x432o0di.html"/>
+      <url>/posts/x432o0di.html</url>
+      
+        <content type="html"><![CDATA[<p>sublime自身带有markdown语法高亮功能，不过却没有<code>markdown</code>预览的功能，需要通过安装插件实现。装上了<code>OmniMarkupPreviewer</code>，发现按下快捷键<kbd>command</kbd> + <kbd>option</kbd> + <kbd>o</kbd>时弹出的浏览器窗口并没有出现预期的结果，而是报错404。</p><p>浏览器里面看到的报错大致如下：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Sorry, the requested URL &#x27;http://127.0.0.1:51004/view/26&#x27; caused an error:</span><br><span class="line"></span><br><span class="line">&#x27;buffer_id(52) is not valid (closed or unsupported file format)&#x27;</span><br><span class="line"></span><br><span class="line">**NOTE:** If you run multiple instances of Sublime Text, you may want to adjust</span><br><span class="line">the `server_port` option in order to get this plugin work again.</span><br></pre></td></tr></table></figure><p>在网上找了以下几种方法都没能解决：</p><h3 id="更改服务器或端口"><a href="#更改服务器或端口" class="headerlink" title="更改服务器或端口"></a>更改服务器或端口</h3><p>404错误有可能是服务器地址或者端口出错，这两样可以在<code>Preferences</code> &gt; <code>Package Settings</code> &gt; <code>OmniMarkupPreviewer</code> &gt; <code>Settings - Default</code>里面更改：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 原配置</span><br><span class="line">&quot;server_host&quot;: &quot;127.0.0.1&quot;,</span><br><span class="line">&quot;server_port&quot;: 51004,</span><br><span class="line"></span><br><span class="line">// 更改后的配置</span><br><span class="line">&quot;server_host&quot;: &quot;0.0.0.0&quot;,</span><br><span class="line">&quot;server_port&quot;: 52000,</span><br></pre></td></tr></table></figure><h3 id="删除Strikethrough扩展"><a href="#删除Strikethrough扩展" class="headerlink" title="删除Strikethrough扩展"></a>删除Strikethrough扩展</h3><p>在<code>Preferences</code> &gt; <code>Package Settings</code> &gt; <code>OmniMarkupPreviewer</code> &gt; <code>Settings - User</code>粘贴以下内容，然后保存。</p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;renderer_options-MarkdownRenderer&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;extensions&quot;</span>: [<span class="string">&quot;tables&quot;</span>, <span class="string">&quot;fenced_code&quot;</span>, <span class="string">&quot;codehilite&quot;</span>]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="修复Strikethrough扩展"><a href="#修复Strikethrough扩展" class="headerlink" title="修复Strikethrough扩展"></a>修复Strikethrough扩展</h3><p>要修复这个扩展需要先找到扩展的存放位置：</p><p>由于我是Mac位置在</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/Users/&lt;username&gt;/Library/Application Support/Sublime Text 3/Packages/OmniMarkupPreviewer/OmniMarkupLib/Renderers/libs/mdx_strikeout.py</span><br></pre></td></tr></table></figure><p>然后直接更改配置文件，将最后的</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">makeExtension</span>(<span class="params">configs=<span class="literal">None</span></span>):</span></span><br><span class="line">    <span class="keyword">return</span> StrikeoutExtension(configs=configs)</span><br></pre></td></tr></table></figure><p>改为：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">makeExtension</span>(<span class="params">*args, **kwargs</span>):</span></span><br><span class="line">    <span class="keyword">return</span> StrikeoutExtension(*args, **kwargs)</span><br></pre></td></tr></table></figure><p>以上方法都没能解决，最后使用下面的方法解决</p><p>在<code>Preferences</code> &gt; <code>Package Settings</code> &gt; <code>OmniMarkupPreviewer</code> &gt; <code>Settings - User</code>粘贴以下内容：</p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;renderer_options-MarkdownRenderer&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;extensions&quot;</span>: [<span class="string">&quot;markdown.extensions.tables&quot;</span>, <span class="string">&quot;markdown.extensions.fenced_code&quot;</span>, <span class="string">&quot;markdown.extensions.codehilite&quot;</span>]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 错误实记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Sublime Text </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Alfred workflow 插件推荐</title>
       <link href="/posts/vawj4tho.html"/>
       <url>/posts/vawj4tho.html</url>
