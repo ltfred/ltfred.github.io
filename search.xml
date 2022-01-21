@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>iTerm2启动提示：zsh compinit:insecure directories run compaudit for list</title>
+      <link href="/posts/vfk83vh5.html"/>
+      <url>/posts/vfk83vh5.html</url>
+      
+        <content type="html"><![CDATA[<p>装完<code>nvm</code>后打开iTerm2后出现以下提示：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zsh compinit: insecure directories, run compaudit for list.</span><br><span class="line">Ignore insecure directories and continue [y] or abort compinit [n]?</span><br></pre></td></tr></table></figure><p>出现这个原因就是提示又不安全的目录，是否忽略。</p><p>解决办法：</p><p>执行<code>compaudit</code>,列出不安全目录，我这里列出的目录为：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/share/zsh/site-functions</span><br><span class="line">/usr/local/share/zsh</span><br></pre></td></tr></table></figure><p>然后赋予目录权限即可</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/share/zsh</span><br><span class="line">sudo chmod -R 755 ./site-functions</span><br><span class="line"> </span><br><span class="line">cd ../</span><br><span class="line">sudo chmod -R 755 zsh</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 错误实记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> zsh </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>关于OmniMarkupPreviewer报错404的解决办法</title>
       <link href="/posts/x432o0di.html"/>
       <url>/posts/x432o0di.html</url>

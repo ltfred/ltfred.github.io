@@ -6,7 +6,7 @@
   <link href="https://ltfred.top/atom.xml" rel="self"/>
   
   <link href="https://ltfred.top/"/>
-  <updated>2021-12-23T07:34:09.000Z</updated>
+  <updated>2022-01-21T07:45:09.000Z</updated>
   <id>https://ltfred.top/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>iTerm2启动提示：zsh compinit:insecure directories run compaudit for list</title>
+    <link href="https://ltfred.top/posts/vfk83vh5.html"/>
+    <id>https://ltfred.top/posts/vfk83vh5.html</id>
+    <published>2022-01-21T07:45:09.000Z</published>
+    <updated>2022-01-21T07:45:09.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>装完<code>nvm</code>后打开iTerm2后出现以下提示：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zsh compinit: insecure directories, run compaudit for list.</span><br><span class="line">Ignore insecure directories and continue [y] or abort compinit [n]?</span><br></pre></td></tr></table></figure><p>出现这个原因就是提示又不安全的目录，是否忽略。</p><p>解决办法：</p><p>执行<code>compaudit</code>,列出不安全目录，我这里列出的目录为：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/share/zsh/site-functions</span><br><span class="line">/usr/local/share/zsh</span><br></pre></td></tr></table></figure><p>然后赋予目录权限即可</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/share/zsh</span><br><span class="line">sudo chmod -R 755 ./site-functions</span><br><span class="line"> </span><br><span class="line">cd ../</span><br><span class="line">sudo chmod -R 755 zsh</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;装完&lt;code&gt;nvm&lt;/code&gt;后打开iTerm2后出现以下提示：&lt;/p&gt;
+&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span</summary>
+      
+    
+    
+    
+    <category term="错误实记" scheme="https://ltfred.top/categories/%E9%94%99%E8%AF%AF%E5%AE%9E%E8%AE%B0/"/>
+    
+    
+    <category term="zsh" scheme="https://ltfred.top/tags/zsh/"/>
+    
+  </entry>
   
   <entry>
     <title>关于OmniMarkupPreviewer报错404的解决办法</title>
