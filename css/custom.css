@@ -1,8 +1,8 @@
 @font-face {
     font-family: 'tzy';
     /* 字体名自定义即可 */
-    /* src: url('https://cdn.jsdelivr.net/gh/tzy13755126023/BLOG_SOURCE/font/ZhuZiAWan.woff2'); */
-    src: url('https://cdn.jsdelivr.net/gh/ltfred/image@master/CangErJinKai.woff2');
+    src: url('https://cdn.jsdelivr.net/gh/tzy13755126023/BLOG_SOURCE/font/ZhuZiAWan.woff2');
+    /* src: url('https://cdn.jsdelivr.net/gh/ltfred/image@master/CangErJinKai.woff2'); */
     /* 字体文件路径 */
     font-display: swap;
 }
