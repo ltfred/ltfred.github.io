@@ -6,29 +6,29 @@ document.addEventListener('DOMContentLoaded', function () {
   const $searchEle = document.querySelector('#search-button')
   let searchWidth = $searchEle && $searchEle.offsetWidth
 
-  const adjustMenu = (change = false) => {
-    if (change) {
-      blogNameWidth = $blogName && $blogName.offsetWidth
-      menusWidth = $menusEle && $menusEle.offsetWidth
-      searchWidth = $searchEle && $searchEle.offsetWidth
-    }
-    const $nav = document.getElementById('nav')
-    let t
-    if (window.innerWidth < 768) t = true
-    else t = blogNameWidth + menusWidth + searchWidth > $nav.offsetWidth - 120
+  // const adjustMenu = (change = false) => {
+  //   if (change) {
+  //     blogNameWidth = $blogName && $blogName.offsetWidth
+  //     menusWidth = $menusEle && $menusEle.offsetWidth
+  //     searchWidth = $searchEle && $searchEle.offsetWidth
+  //   }
+  //   const $nav = document.getElementById('nav')
+  //   let t
+  //   if (window.innerWidth < 768) t = true
+  //   else t = blogNameWidth + menusWidth + searchWidth > $nav.offsetWidth - 120
 
-    if (t) {
-      $nav.classList.add('hide-menu')
-    } else {
-      $nav.classList.remove('hide-menu')
-    }
-  }
+  //   if (t) {
+  //     $nav.classList.add('hide-menu')
+  //   } else {
+  //     $nav.classList.remove('hide-menu')
+  //   }
+  // }
 
-  // 初始化header
-  const initAdjust = () => {
-    adjustMenu()
-    document.getElementById('nav').classList.add('show')
-  }
+  // // 初始化header
+  // const initAdjust = () => {
+  //   adjustMenu()
+  //   document.getElementById('nav').classList.add('show')
+  // }
 
   // sidebar menus
   const sidebarFn = () => {
@@ -826,8 +826,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   const unRefreshFn = function () {
-    window.addEventListener('resize', adjustMenu)
-    window.addEventListener('orientationchange', () => { setTimeout(adjustMenu(true), 100) })
+    // window.addEventListener('resize', adjustMenu)
+    // window.addEventListener('orientationchange', () => { setTimeout(adjustMenu(true), 100) })
 
     clickFnOfSubMenu()
     GLOBAL_CONFIG.islazyload && lazyloadImg()
@@ -835,7 +835,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   window.refreshFn = function () {
-    initAdjust()
+    // initAdjust()
 
     if (GLOBAL_CONFIG_SITE.isPost) {
       GLOBAL_CONFIG_SITE.isToc && tocFn()
